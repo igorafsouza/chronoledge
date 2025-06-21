@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETL Test - ChronoLedge</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-lg sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <div class="flex-shrink-0 flex items-center">
+                            <h1 class="text-xl font-bold text-gray-800">🧬 ChronoLedge ETL</h1>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="/" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            🚀 Adventure Mode
+                        </a>
+                        <a href="/etl" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                            ETL Manager
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="bg-white shadow rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-6">📊 ETL Manager: Wikimedia Current Events</h2>
+                
+                <!-- Extraction Modes -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <!-- Current Events -->
+                    <div class="bg-gray-50 rounded-lg p-4 flex flex-col h-full">
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">Current Events</h3>
+                        <p class="text-sm text-gray-600 mb-3 flex-grow">Extract today's events and recent unextracted dates</p>
+                        <button id="fetch-current-btn" 
+                                class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Fetch Current Events
+                        </button>
+                    </div>
+
+                    <!-- Specific Date -->
+                    <div class="bg-gray-50 rounded-lg p-4 flex flex-col h-full">
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">Specific Date</h3>
+                        <div class="flex-grow">
+                            <label for="date-input" class="block text-sm font-medium text-gray-700">Date</label>
+                            <input type="text" 
+                                   id="date-input" 
+                                   class="mt-1 block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                   placeholder="e.g., 2025_June_16">
+                        </div>
+                        <button id="fetch-date-btn" 
+                                class="mt-3 w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Fetch Date Events
+                        </button>
+                    </div>
+
+                    <!-- Month Extraction -->
+                    <div class="bg-gray-50 rounded-lg p-4 flex flex-col h-full">
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">Extract Month</h3>
+                        <div class="space-y-2 flex-grow">
+                            <div>
+                                <label for="year-input" class="block text-sm font-medium text-gray-700">Year</label>
+                                <input type="number" 
+                                       id="year-input" 
+                                       class="mt-1 block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                       value="2025" min="2020" max="2030">
+                            </div>
+                            <div>
+                                <label for="month-select" class="block text-sm font-medium text-gray-700">Month</label>
+                                <select id="month-select" 
+                                        class="mt-1 block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June" selected>June</option>
+                                    <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="fetch-month-btn" 
+                                class="mt-3 w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Extract Entire Month
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Semantic Pipeline Section -->
+                <div class="mb-6 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-6 border-2 border-purple-200">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">🧠 Semantic Phylogeny Pipeline</h2>
+                    <p class="text-sm text-gray-600 mb-4">Build semantic knowledge graph from chronologically ordered events using domain-based evolution. <strong>This powers the Adventure page visualizations!</strong></p>
+                    
+                    <div class="bg-white rounded-lg p-4 mb-4">
+                        <h3 class="text-sm font-semibold text-gray-700 mb-2">📊 Engine Features:</h3>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• <strong>Domain-Based Clustering</strong>: Events grouped by root domain (sports, politics, etc.)</li>
+                            <li>• <strong>Chronological Processing</strong>: Events processed from oldest to newest files</li>
+                            <li>• <strong>Natural AEZ Evolution</strong>: AEZs split when semantically diverse (k-means clustering)</li>
+                            <li>• <strong>Lineage Creation</strong>: AEZ splits create new lineage nodes showing evolution</li>
+                            <li>• <strong>No Cross-Domain Inheritance</strong>: Strict domain boundaries enforced</li>
+                            <li>• <strong>Clean Semantic Similarity</strong>: AEZ membership indicates semantic similarity</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Pipeline Controls -->
+                    <div class="flex flex-wrap gap-3 mb-4">
+                        <button id="run-pipeline-btn" 
+                                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                            Run Pipeline
+                        </button>
+                        
+                        <button id="run-pipeline-force-btn" 
+                                class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                            Force Rebuild
+                        </button>
+                        
+
+                    </div>
+                    
+                    <!-- Pipeline Progress -->
+                    <div id="pipeline-progress" class="hidden">
+                        <div class="mb-2">
+                            <div class="flex justify-between text-sm">
+                                <span id="progress-stage">Initializing...</span>
+                                <span id="progress-percent">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div id="progress-bar" class="bg-purple-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div id="progress-message" class="text-sm text-gray-600 mb-2">Starting pipeline...</div>
+                        <div id="progress-log" class="max-h-32 overflow-y-auto text-xs text-gray-500 bg-gray-50 rounded p-2"></div>
+                    </div>
+                    
+                    <!-- Pipeline Status -->
+                    <div id="pipeline-status" class="mt-4">
+                        <h4 class="text-sm font-medium text-gray-900 mb-2">Component Status</h4>
+                        <div id="component-status" class="text-sm text-gray-600">
+                            Loading pipeline status...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extraction Status -->
+                <div class="mb-4 bg-blue-50 rounded-lg p-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Extraction Status</h3>
+                    <div id="extraction-status" class="text-sm text-gray-600">
+                        Loading extraction history...
+                    </div>
+                </div>
+
+                <!-- Loading and Error States -->
+                <div id="loading" class="hidden text-gray-500 mb-2">Loading...</div>
+                <div id="error" class="text-red-500 mb-2"></div>
+
+                <!-- Results -->
+                <div id="results" class="mt-4">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Events</h3>
+                        <div id="events-summary" class="text-sm text-gray-600 mb-2"></div>
+                        <div id="events-list" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                    </div>
+                </div>
+
+                <!-- Raw Response -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Raw Response</h3>
+                    <pre id="raw-response" class="bg-gray-50 rounded-lg p-4 overflow-x-auto text-sm max-h-96"></pre>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Load extraction status on page load
+        window.onload = function() {
+            loadExtractionStatus();
+            loadPipelineStatus();
+        };
+
+        function loadExtractionStatus() {
+            fetch('/api/etl/extraction-status')
+                .then(res => res.json())
+                .then(data => {
+                    const statusDiv = document.getElementById('extraction-status');
+                    if (data.status === 'success') {
+                        const summary = data.summary;
+                        statusDiv.innerHTML = `
+                            <div>Total dates extracted: <strong>${summary.total_dates_extracted}</strong></div>
+                            <div>Last extraction: <strong>${summary.last_extraction || 'Never'}</strong></div>
+                            <div class="mt-2">Recent extractions:</div>
+                            <ul class="list-disc list-inside ml-4">
+                                ${summary.recent_extractions.slice(-5).reverse().map(e => 
+                                    `<li>${e.date_id} - ${e.event_count} events (${e.extraction_type})</li>`
+                                ).join('')}
+                            </ul>
+                        `;
+                    }
+                })
+                .catch(err => console.error('Error loading status:', err));
+        }
+
+        function loadPipelineStatus() {
+            fetch('/api/etl/semantic-pipeline/status')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        const status = data.pipeline_status;
+                        const statusDiv = document.getElementById('component-status');
+                        
+                        const phylogenyEngine = {
+                            name: 'Phylogeny Engine',
+                            status: status.components.phylogeny_engine.lineage_nodes_file_exists && 
+                                   status.components.phylogeny_engine.aezs_file_exists && 
+                                   status.components.phylogeny_engine.events_file_exists &&
+                                   status.components.phylogeny_engine.graph_file_exists
+                        };
+                        
+                        const eventFiles = status.data_status.event_files || [];
+                        const chronoInfo = eventFiles.length > 0 ? 
+                            `<div class="text-xs text-gray-500 mt-1">Available files: ${eventFiles.slice(0, 3).join(', ')}${eventFiles.length > 3 ? ` (+${eventFiles.length - 3} more)` : ''}</div>` : '';
+                        
+                        statusDiv.innerHTML = `
+                            <div>Events available: <strong>${status.data_status.events_count}</strong> files (chronologically sorted)</div>
+                            ${chronoInfo}
+                            <div class="mt-3">
+                                <div class="flex items-center">
+                                    <span class="w-3 h-3 rounded-full mr-2 ${phylogenyEngine.status ? 'bg-green-500' : 'bg-red-500'}"></span>
+                                    <span class="${phylogenyEngine.status ? 'text-green-700' : 'text-red-700'}">${phylogenyEngine.name}</span>
+                                    <span class="ml-2 text-xs text-gray-500">${phylogenyEngine.status ? 'Ready' : 'Not built'}</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading pipeline status:', err);
+                    const statusDiv = document.getElementById('component-status');
+                    statusDiv.innerHTML = `
+                        <div class="text-red-600">Error loading pipeline status</div>
+                    `;
+                });
+        }
+
+
+
+        function runSemanticPipeline(forceRebuild = false) {
+            const progressDiv = document.getElementById('pipeline-progress');
+            const runBtn = document.getElementById('run-pipeline-btn');
+            const forceBtn = document.getElementById('run-pipeline-force-btn');
+            
+            // Show progress and disable buttons
+            progressDiv.classList.remove('hidden');
+            runBtn.disabled = true;
+            forceBtn.disabled = true;
+            runBtn.innerHTML = '<svg class="animate-spin w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 714 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Running...';
+            
+            // Clear previous progress
+            document.getElementById('progress-log').innerHTML = '';
+            updateProgress('initialization', 'running', 0, 'Starting Phylogeny Pipeline (chronological processing)...');
+            
+            // Start pipeline
+            const endpoint = `/api/etl/semantic-pipeline/run?force_rebuild=${forceRebuild}`;
+            fetch(endpoint, { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        const results = data.pipeline_results;
+                        updateProgress('completion', 'completed', 100, `Pipeline completed in ${results.duration_seconds?.toFixed(1)}s`);
+                        
+                        // Show results summary
+                        const summary = results.phylogeny_summary || results.summary;
+                        if (summary) {
+                            const logDiv = document.getElementById('progress-log');
+                            logDiv.innerHTML += `<div class="text-green-600 font-medium">✅ Phylogeny Pipeline completed successfully!</div>`;
+                            
+                            // Show engine stats
+                            logDiv.innerHTML += `<div>🌍 Root Domains: ${summary.total_domains || 0} semantic domains</div>`;
+                            logDiv.innerHTML += `<div>🌲 Lineage Nodes: ${summary.total_lineage_nodes || 0} evolution branches</div>`;
+                            logDiv.innerHTML += `<div>🧠 AEZs: ${summary.total_aezs || 0} semantic zones with ${summary.total_events || 0} events</div>`;
+                            logDiv.innerHTML += `<div>🔗 Graph Structure: ${summary.graph_nodes || 0} nodes, ${summary.graph_edges || 0} edges</div>`;
+                            logDiv.innerHTML += `<div>📅 Chronological processing ensured semantic evolution tracking</div>`;
+                        }
+                        
+                        // Refresh status
+                        setTimeout(() => {
+                            loadExtractionStatus();
+                            loadPipelineStatus();
+                        }, 1000);
+                    } else {
+                        updateProgress('error', 'error', 0, `Pipeline failed: ${data.error || 'Unknown error'}`);
+                    }
+                })
+                .catch(err => {
+                    updateProgress('error', 'error', 0, `Network error: ${err.message}`);
+                })
+                .finally(() => {
+                    // Re-enable buttons
+                    runBtn.disabled = false;
+                    forceBtn.disabled = false;
+                    runBtn.innerHTML = '<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>Run Pipeline';
+                });
+            
+            // Poll for progress updates
+            const pollProgress = () => {
+                fetch('/api/etl/semantic-pipeline/progress')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.status === 'success' && data.last_update) {
+                            const update = data.last_update;
+                            updateProgress(update.stage, update.status, update.progress_percent, update.message);
+                            
+                            // Continue polling if not completed
+                            if (update.status === 'running' || update.stage === 'aez_management') {
+                                setTimeout(pollProgress, 2000);
+                            }
+                        }
+                    })
+                    .catch(err => console.error('Error polling progress:', err));
+            };
+            
+            // Start polling after a short delay
+            setTimeout(pollProgress, 2000);
+        }
+
+        function updateProgress(stage, status, percent, message) {
+            document.getElementById('progress-stage').textContent = stage.replace('_', ' ').toUpperCase();
+            document.getElementById('progress-percent').textContent = `${percent.toFixed(1)}%`;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            document.getElementById('progress-message').textContent = message;
+            
+            // Add to log
+            const logDiv = document.getElementById('progress-log');
+            const timestamp = new Date().toLocaleTimeString();
+            const statusIcon = status === 'completed' ? '✅' : status === 'error' ? '❌' : '⏳';
+            logDiv.innerHTML += `<div>[${timestamp}] ${statusIcon} ${stage}: ${message}</div>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+            
+            // Update progress bar color
+            const progressBar = document.getElementById('progress-bar');
+            if (status === 'completed') {
+                progressBar.className = 'bg-green-600 h-2 rounded-full transition-all duration-300';
+            } else if (status === 'error') {
+                progressBar.className = 'bg-red-600 h-2 rounded-full transition-all duration-300';
+            } else {
+                progressBar.className = 'bg-purple-600 h-2 rounded-full transition-all duration-300';
+            }
+        }
+
+
+
+        function fetchEvents(url, mode) {
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const eventsList = document.getElementById('events-list');
+            const eventsSummary = document.getElementById('events-summary');
+            const rawResponse = document.getElementById('raw-response');
+
+            // Clear previous results
+            loading.classList.remove('hidden');
+            error.textContent = '';
+            eventsList.innerHTML = '';
+            eventsSummary.textContent = '';
+            rawResponse.textContent = '';
+
+            // Fetch events
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    loading.classList.add('hidden');
+                    
+                    // Display raw response
+                    rawResponse.textContent = JSON.stringify(data, null, 2);
+
+                    // Display events
+                    if (data.events && data.events.length > 0) {
+                        let summaryText = `Found ${data.events.length} events (${mode})`;
+                        if (data.dates_processed) {
+                            summaryText += ` - Processed ${data.dates_processed} dates`;
+                        }
+                        eventsSummary.textContent = summaryText;
+                        
+                        // Group events by category for better display
+                        const eventsByCategory = {};
+                        data.events.forEach(event => {
+                            const category = event.full_category || event.category || 'Uncategorized';
+                            if (!eventsByCategory[category]) {
+                                eventsByCategory[category] = [];
+                            }
+                            eventsByCategory[category].push(event);
+                        });
+
+                        // Display grouped events
+                        Object.entries(eventsByCategory).forEach(([category, events]) => {
+                            const categoryDiv = document.createElement('div');
+                            categoryDiv.className = 'mb-4';
+                            categoryDiv.innerHTML = `
+                                <h4 class="font-semibold text-gray-800 mb-2">${category} (${events.length})</h4>
+                                <div class="space-y-1">
+                                    ${events.map(event => {
+                                        const temporalInfo = event.temporal_info ? 
+                                            ` <span class="text-xs text-gray-500">[${event.temporal_info.temporal_reference}]</span>` : '';
+                                        return `<div class="p-2 bg-white rounded shadow-sm text-sm">${event.summary}${temporalInfo}</div>`;
+                                    }).join('')}
+                                </div>
+                            `;
+                            eventsList.appendChild(categoryDiv);
+                        });
+                    } else {
+                        eventsList.innerHTML = '<div class="text-gray-500">No events found.</div>';
+                    }
+
+                    // Reload extraction status
+                    loadExtractionStatus();
+                })
+                .catch(err => {
+                    loading.classList.add('hidden');
+                    error.textContent = 'Error fetching events: ' + err.message;
+                });
+        }
+
+        // Event listeners
+        document.getElementById('fetch-current-btn').onclick = function() {
+            fetchEvents('/api/etl/wikimedia/current-events', 'current');
+        };
+
+        document.getElementById('fetch-date-btn').onclick = function() {
+            const dateInput = document.getElementById('date-input').value.trim();
+            if (!dateInput) {
+                document.getElementById('error').textContent = 'Please enter a date';
+                return;
+            }
+            fetchEvents(`/api/etl/wikimedia/current-events?date=${encodeURIComponent(dateInput)}`, 'date');
+        };
+
+        document.getElementById('fetch-month-btn').onclick = function() {
+            const year = document.getElementById('year-input').value;
+            const month = document.getElementById('month-select').value;
+            fetchEvents(`/api/etl/wikimedia/month-events?year=${year}&month=${month}`, 'month');
+        };
+
+        // Semantic pipeline event listeners
+        document.getElementById('run-pipeline-btn').onclick = function() {
+            runSemanticPipeline(false);
+        };
+
+        document.getElementById('run-pipeline-force-btn').onclick = function() {
+            runSemanticPipeline(true);
+        };
+    </script>
+</body>
+</html> 

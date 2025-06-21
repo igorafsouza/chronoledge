@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoLedge Adventure - Phylogeny Tree Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/static/adventure.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <style>
+        /* Custom styles for phylogeny trees */
+        .tree-container {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+            min-height: 400px;
+            position: relative;
+        }
+        
+        .tree-svg {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+        }
+        
+        .node-lineage {
+            fill: #3b82f6;
+            stroke: #1e40af;
+            stroke-width: 2px;
+        }
+        
+        .node-aez-active {
+            fill: #10b981;
+            stroke: #047857;
+            stroke-width: 1.5px;
+        }
+        
+        .node-aez-inactive {
+            fill: #ef4444;
+            stroke: #dc2626;
+            stroke-width: 1px;
+            opacity: 0.7;
+        }
+        
+        .link-lineage {
+            stroke: #3b82f6;
+            stroke-width: 3px;
+            fill: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        .link-aez {
+            stroke: #10b981;
+            stroke-width: 2px;
+            fill: none;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .link:hover {
+            opacity: 1;
+            stroke-width: 4px;
+        }
+        
+        .node-label {
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 1000;
+            max-width: 250px;
+            word-wrap: break-word;
+        }
+        
+        .chat-message {
+            transition: all 0.3s ease;
+        }
+        
+        .chat-message:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .domain-card {
+            transition: all 0.3s ease;
+        }
+        
+        .domain-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Chat expand/minimize states */
+        .chat-messages-container {
+            height: 12rem; /* h-48 equivalent */
+        }
+        
+        .chat-expanded .chat-messages-container {
+            height: 28rem; /* Expanded height for better markdown reading */
+        }
+        
+        .chat-expanded {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 45%;
+            min-width: 500px;
+            z-index: 50;
+            background: white;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-expanded .chat-messages-container {
+            flex: 1;
+            height: auto;
+        }
+        
+        .chat-expand-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 40;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-lg sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <div class="flex-shrink-0 flex items-center">
+                            <h1 class="text-xl font-bold text-gray-800">🧬 ChronoLedge Adventure</h1>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="/" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                            🚀 Adventure Mode
+                        </a>
+                        <a href="/etl" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            ETL Manager
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900">🌳 Phylogeny Tree Explorer</h1>
+                <p class="mt-2 text-lg text-gray-600">Explore semantic evolution through clean phylogenetic trees showing domains, lineages, and semantic clusters</p>
+                <div class="mt-3 flex items-center gap-6 text-sm text-gray-500">
+                    <div class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <span>Zoom & Pan enabled</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                        <span>Click AEZ to explore events</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                        <span>Hover for details</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-6 h-screen" style="height: calc(100vh - 180px);">
+                <!-- Left Panel - Domain Navigator -->
+                <div class="w-80 bg-white rounded-lg shadow-sm flex flex-col">
+                    <!-- Domain Panel Header -->
+                    <div class="p-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-semibold text-gray-900 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
+                                Domains
+                            </h2>
+                            <button id="refresh-domains" onclick="loadPhylogenyData()" 
+                                    class="p-2 text-gray-400 hover:text-gray-600 transition-colors" 
+                                    title="Refresh domains">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">Select a domain to explore its phylogeny</p>
+                    </div>
+
+                    <!-- Domain List -->
+                    <div id="domain-list" class="flex-1 overflow-y-auto p-4 space-y-2">
+                        <!-- Domain items will be inserted here -->
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="p-4 border-t border-gray-200 bg-gray-50">
+                        <h3 class="text-sm font-medium text-gray-700 mb-3">Tree Structure</h3>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full border border-indigo-600"></div>
+                                <span>Domain Root</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full border border-indigo-700"></div>
+                                <span>Lineage Nodes</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-sm font-medium text-gray-700 mb-2 mt-4">AEZ Temperature</h3>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 bg-gradient-to-br from-yellow-300 to-yellow-500 border-yellow-500"></div>
+                                <span>🔥 HOT (Ready to split)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 bg-gradient-to-br from-pink-500 to-pink-700 border-pink-700"></div>
+                                <span>🟡 WARM (Approaching)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 bg-gradient-to-br from-purple-600 to-purple-800 border-purple-800"></div>
+                                <span>🟠 COOL (Moderate)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 bg-gradient-to-br from-indigo-900 to-indigo-700 border-indigo-800"></div>
+                                <span>❄️ COLD (Coherent)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 pt-3 border-t border-gray-300">
+                            <p class="text-xs text-gray-600 italic">
+                                💡 Click AEZ nodes to view contained events<br>
+                                🌡️ Colors show semantic divergence temperature<br>
+                                🌱 Inactive AEZs hidden (replaced by lineages)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Visualization Panel -->
+                <div class="flex-1 bg-white rounded-lg shadow-sm flex flex-col">
+                    <!-- Main Panel Header -->
+                    <div class="p-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h2 id="current-domain-title" class="text-lg font-semibold text-gray-900">
+                                    Select a domain to explore
+                                </h2>
+                                <p id="current-domain-stats" class="text-sm text-gray-600 mt-1">
+                                    Choose from the left panel to begin phylogenetic exploration
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <!-- View Controls -->
+                                <div class="flex bg-gray-100 rounded-lg p-1">
+                                    <button id="view-tree" class="px-3 py-1 text-xs font-medium rounded bg-white text-gray-900 shadow-sm">
+                                        Tree View
+                                    </button>
+                                    <button id="view-timeline" class="px-3 py-1 text-xs font-medium rounded text-gray-600 hover:text-gray-900">
+                                        Timeline
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visualization Container -->
+                    <div class="flex-1 relative overflow-hidden">
+                        <div id="main-visualization" class="w-full h-full">
+                            <!-- Tree will render here -->
+                            <svg id="main-tree-svg" class="w-full h-full"></svg>
+                        </div>
+
+                        <!-- Loading State -->
+                        <div id="main-loading" class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-90 hidden">
+                            <div class="text-center">
+                                <div class="loading-spinner mx-auto mb-4"></div>
+                                <p class="text-gray-600">Loading phylogeny tree...</p>
+                            </div>
+                        </div>
+
+                        <!-- Empty State -->
+                        <div id="main-empty" class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <svg class="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0118 12a8 8 0 01-8 8 8 8 0 01-8-8 8 8 0 018-8c2.14 0 4.084.84 5.516 2.206"></path>
+                                </svg>
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">Ready to Explore</h3>
+                                <p class="text-gray-600 max-w-sm">Select a domain from the left panel to visualize its semantic evolution tree</p>
+                            </div>
+                        </div>
+
+                        <!-- Semantic Trail Overlay -->
+                        <div id="semantic-trail" class="absolute top-4 left-4 bg-black bg-opacity-75 text-white px-3 py-2 rounded-lg text-sm hidden">
+                            <div class="font-medium">Semantic Path</div>
+                            <div id="trail-content" class="text-xs mt-1 opacity-90">
+                                <!-- Trail will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Inspector -->
+                <div class="w-96 bg-white rounded-lg shadow-sm flex flex-col">
+                    <!-- Inspector Header -->
+                    <div class="p-4 border-b border-gray-200">
+                        <h2 class="text-lg font-semibold text-gray-900 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                            </svg>
+                            Inspector
+                        </h2>
+                        <p class="text-sm text-gray-600 mt-1">Click nodes to explore details</p>
+                    </div>
+
+                    <!-- Inspector Content -->
+                    <div id="inspector-content" class="flex-1 overflow-y-auto">
+                        <!-- Default State -->
+                        <div id="inspector-default" class="p-6 text-center">
+                            <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <h3 class="text-sm font-medium text-gray-900 mb-2">Node Inspector</h3>
+                            <p class="text-xs text-gray-600">Click on any node in the tree to see detailed information, related events, and exploration options.</p>
+                        </div>
+
+                        <!-- Node Details -->
+                        <div id="inspector-details" class="hidden">
+                            <!-- Content will be dynamically populated -->
+                        </div>
+                    </div>
+
+                    <!-- AI Chat Section -->
+                    <div class="border-t border-gray-200" id="chat-section">
+                        <!-- Chat Header -->
+                        <div class="p-3 bg-gray-50 flex items-center justify-between">
+                            <h3 class="text-sm font-medium text-gray-900 flex items-center">
+                                <svg class="w-4 h-4 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                                AI Reasoning Engine
+                            </h3>
+                            <button id="chat-expand-btn" onclick="toggleChatExpanded()" 
+                                    class="text-gray-500 hover:text-gray-700 p-1 rounded transition-colors"
+                                    title="Expand chat for better markdown reading">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Chat Messages -->
+                        <div id="chat-messages" class="chat-messages-container overflow-y-auto p-3 space-y-3 scrollbar-hide bg-gray-50 transition-all duration-300">
+                            <!-- Welcome message -->
+                            <div class="chat-message p-2 bg-purple-50 rounded-lg border border-purple-200">
+                                <div class="text-xs text-purple-800">
+                                    <p class="font-medium">🧠 AI Reasoning Engine</p>
+                                    <p class="mt-1">Ask me anything about the phylogenetic data! I can analyze clusters, compare evolutionary paths, explain patterns, or answer any questions about semantic evolution.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Input -->
+                        <div class="p-3 border-t border-gray-200">
+                            <div class="flex space-x-2">
+                                <input type="text" 
+                                       id="chat-input"
+                                       class="flex-1 rounded border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 text-xs px-2 py-1"
+                                       placeholder="Ask anything about the phylogenetic data..."
+                                       onkeypress="handleChatKeyPress(event)">
+                                <button onclick="sendMessage()"
+                                        id="send-button"
+                                        class="inline-flex items-center px-2 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium rounded transition-colors">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip" style="display: none;"></div>
+
+    <script>
+        // Global variables
+        let phylogenyData = null;
+        let chatHistory = [];
+        let currentDomain = null;
+        let currentTreeData = null;
+        let mainSvg = null;
+        let semanticTrailActive = false;
+        let chatExpanded = false;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPhylogenyData();
+            initializeMainVisualization();
+        });
+
+        // Initialize main visualization
+        function initializeMainVisualization() {
+            mainSvg = d3.select("#main-tree-svg");
+            
+            // Add zoom behavior
+            const zoom = d3.zoom()
+                .scaleExtent([0.3, 5])
+                .on("zoom", function(event) {
+                    if (mainSvg.select('.main-tree-group').node()) {
+                        mainSvg.select('.main-tree-group')
+                            .attr("transform", event.transform);
+                    }
+                });
+            
+            mainSvg.call(zoom);
+        }
+
+        // Load phylogeny data from backend
+        async function loadPhylogenyData() {
+            const domainList = document.getElementById('domain-list');
+            
+            try {
+                const response = await fetch('/api/phylogeny/data');
+                if (!response.ok) throw new Error('Failed to load data');
+                
+                phylogenyData = await response.json();
+                
+                if (phylogenyData.domains && phylogenyData.domains.length > 0) {
+                    renderDomainList();
+                } else {
+                    domainList.innerHTML = '<div class="text-center py-8 text-gray-500"><p class="text-sm">No domains available</p><p class="text-xs mt-1">Run ETL process first</p></div>';
+                }
+                
+            } catch (error) {
+                console.error('Error loading phylogeny data:', error);
+                domainList.innerHTML = '<div class="text-center py-8 text-red-500"><p class="text-sm">Error loading domains</p><p class="text-xs mt-1">Check server connection</p></div>';
+            }
+        }
+
+        // Render domain list in left panel
+        function renderDomainList() {
+            const domainList = document.getElementById('domain-list');
+            domainList.innerHTML = '';
+            
+            phylogenyData.domains.forEach(domain => {
+                const domainData = phylogenyData.domain_summaries[domain];
+                const domainItem = document.createElement('div');
+                domainItem.className = 'domain-item p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all cursor-pointer';
+                domainItem.onclick = () => selectDomain(domain);
+                
+                // Calculate evolution indicators
+                const evolutionLevel = domainData.total_lineages > 2 ? 'High' : 
+                                     domainData.total_lineages > 0 ? 'Medium' : 'Low';
+                const evolutionColor = evolutionLevel === 'High' ? 'text-red-600' : 
+                                     evolutionLevel === 'Medium' ? 'text-yellow-600' : 'text-green-600';
+                
+                domainItem.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-medium text-gray-900 text-sm leading-tight">${domain}</h3>
+                            <div class="mt-2 grid grid-cols-2 gap-2 text-xs text-gray-600">
+                                <div class="flex items-center gap-1">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span>${domainData.total_events} events</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span>${domainData.active_aezs} clusters</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                    <span>${domainData.total_lineages} lineages</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+                                    <span class="${evolutionColor}">${evolutionLevel} evolution</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ml-2">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                `;
+                
+                domainList.appendChild(domainItem);
+            });
+        }
+
+        // Select domain from left panel
+        async function selectDomain(domain) {
+            // Update UI state
+            currentDomain = domain;
+            updateDomainSelection(domain);
+            
+            // Update main panel header
+            const titleEl = document.getElementById('current-domain-title');
+            const statsEl = document.getElementById('current-domain-stats');
+            const domainData = phylogenyData.domain_summaries[domain];
+            
+            titleEl.textContent = domain;
+            statsEl.textContent = `${domainData.total_events} events • ${domainData.active_aezs} active clusters • ${domainData.total_lineages} lineages`;
+            
+            // Show loading state
+            document.getElementById('main-loading').classList.remove('hidden');
+            document.getElementById('main-empty').style.display = 'none';
+            clearInspector();
+            
+            try {
+                // Fetch tree structure (phylogenetic hierarchy only)
+                const response = await fetch(`/api/phylogeny/tree/${encodeURIComponent(domain)}`);
+                if (!response.ok) throw new Error('Failed to load tree data');
+                
+                currentTreeData = await response.json();
+                
+                // Hide loading state
+                document.getElementById('main-loading').classList.add('hidden');
+                
+                // Render the main tree
+                renderMainTree(currentTreeData);
+                
+            } catch (error) {
+                console.error(`Error loading tree for ${domain}:`, error);
+                document.getElementById('main-loading').classList.add('hidden');
+                showError('Failed to load tree data');
+            }
+        }
+        
+        // Update domain selection UI
+        function updateDomainSelection(selectedDomain) {
+            const domainItems = document.querySelectorAll('.domain-item');
+            domainItems.forEach(item => {
+                if (item.textContent.includes(selectedDomain)) {
+                    item.classList.add('border-blue-500', 'bg-blue-50');
+                    item.classList.remove('border-gray-200');
+                } else {
+                    item.classList.remove('border-blue-500', 'bg-blue-50');
+                    item.classList.add('border-gray-200');
+                }
+            });
+        }
+
+        // Render main tree in the central panel
+        function renderMainTree(data) {
+            if (!data.nodes || data.nodes.length === 0) {
+                showError('No tree data available for this domain');
+                return;
+            }
+            
+            // Clear existing tree
+            mainSvg.selectAll("*").remove();
+            
+            const container = document.getElementById('main-visualization');
+            const bbox = container.getBoundingClientRect();
+            const width = bbox.width;
+            const height = bbox.height;
+            // Control dendrogram size: larger number = smaller tree, smaller number = larger tree
+            const radius = Math.min(width, height) / 2 - 10;
+            const centerX = width / 2;
+            const centerY = height / 2;
+            
+            // Create main group with zoom support
+            const g = mainSvg.append("g")
+                .attr("class", "main-tree-group")
+                .attr("transform", `translate(${centerX},${centerY})`);
+            
+            // Setup definitions for gradients and markers
+            const defs = mainSvg.append("defs");
+            
+            // Create gradients for different node types
+            createNodeGradients(defs);
+            createArrowMarkers(defs);
+            
+            // Convert flat data to hierarchical structure
+            const hierarchy = d3.stratify()
+                .id(d => d.id)
+                .parentId(d => d.parent)
+                (data.nodes);
+            
+            // Create radial tree layout
+            const treeLayout = d3.tree()
+                .size([2 * Math.PI, radius])
+                .separation((a, b) => {
+                    return (a.parent == b.parent ? 1 : 2) / (a.depth + 1);
+                });
+            
+            const treeData = treeLayout(hierarchy);
+            
+            // Draw concentric circles for depth visualization
+            drawDepthCircles(g, radius, treeData);
+            
+            // Draw center domain root
+            drawDomainRoot(g, currentDomain);
+            
+            // Draw links with enhanced styling
+            drawTreeLinks(g, treeData);
+            
+            // Draw nodes with interactions
+            drawTreeNodes(g, treeData);
+            
+            // Add zoom controls
+            addZoomControls();
+        }
+        
+        // Create gradients for different node types
+        function createNodeGradients(defs) {
+            // Domain root gradient
+            const domainGradient = defs.append("radialGradient")
+                .attr("id", "domain-gradient")
+                .attr("cx", "50%").attr("cy", "30%").attr("r", "70%");
+            domainGradient.append("stop").attr("offset", "0%").attr("stop-color", "#a855f7").attr("stop-opacity", 0.9);
+            domainGradient.append("stop").attr("offset", "100%").attr("stop-color", "#6366f1").attr("stop-opacity", 0.7);
+            
+                        // AEZ gradient (orange)
+            const aezGradient = defs.append("radialGradient")
+                .attr("id", "aez-gradient")
+                .attr("cx", "50%").attr("cy", "30%").attr("r", "70%");
+            aezGradient.append("stop").attr("offset", "0%").attr("stop-color", "#f97316").attr("stop-opacity", 0.9);
+            aezGradient.append("stop").attr("offset", "100%").attr("stop-color", "#5403a0").attr("stop-opacity", 0.7);
+            
+            // Lineage gradient (blue)
+            const lineageGradient = defs.append("radialGradient")
+                .attr("id", "lineage-gradient")
+                .attr("cx", "50%").attr("cy", "30%").attr("r", "70%");
+            lineageGradient.append("stop").attr("offset", "0%").attr("stop-color", "#3b82f6").attr("stop-opacity", 0.9);
+            lineageGradient.append("stop").attr("offset", "100%").attr("stop-color", "#1e40af").attr("stop-opacity", 0.7);
+            
+            // Temperature-based gradients for AEZ nodes
+            // Hot gradient (red - ready to split)
+            const hotGradient = defs.append("radialGradient")
+                .attr("id", "hot-gradient")
+                .attr("cx", "50%").attr("cy", "30%").attr("r", "70%");
+            hotGradient.append("stop").attr("offset", "0%").attr("stop-color", "#dc2626").attr("stop-opacity", 0.9);
+            hotGradient.append("stop").attr("offset", "100%").attr("stop-color", "#f9fd38").attr("stop-opacity", 0.8);
+            
+            // Warm gradient (yellow/orange - approaching split)
+            const warmGradient = defs.append("radialGradient")
+                .attr("id", "warm-gradient")
+                .attr("cx", "50%").attr("cy", "30%").attr("r", "70%");
+            warmGradient.append("stop").attr("offset", "0%").attr("stop-color", "#f59e0b").attr("stop-opacity", 0.9);
+            warmGradient.append("stop").attr("offset", "100%").attr("stop-color", "#b93275").attr("stop-opacity", 0.8);
+            
+            // Cool gradient (light orange - moderate diversity)
+            const coolGradient = defs.append("radialGradient")
+                .attr("id", "cool-gradient")
+                .attr("cx", "50%").attr("cy", "30%").attr("r", "70%");
+            coolGradient.append("stop").attr("offset", "0%").attr("stop-color", "#fb923c").attr("stop-opacity", 0.9);
+            coolGradient.append("stop").attr("offset", "100%").attr("stop-color", "#5403a0").attr("stop-opacity", 0.7);
+            
+            // Cold gradient (ice blue - highly coherent)
+            const coldGradient = defs.append("radialGradient")
+                .attr("id", "cold-gradient")
+                .attr("cx", "50%").attr("cy", "30%").attr("r", "70%");
+            coldGradient.append("stop").attr("offset", "0%").attr("stop-color", "#67e8f9").attr("stop-opacity", 0.9);
+            coldGradient.append("stop").attr("offset", "100%").attr("stop-color", "#0d0887").attr("stop-opacity", 0.8);
+            
+            // Recent event gradient
+            const recentGradient = defs.append("radialGradient")
+                .attr("id", "recent-gradient")
+                .attr("cx", "50%").attr("cy", "30%").attr("r", "70%");
+            recentGradient.append("stop").attr("offset", "0%").attr("stop-color", "#10b981").attr("stop-opacity", 0.9);
+            recentGradient.append("stop").attr("offset", "100%").attr("stop-color", "#047857").attr("stop-opacity", 0.7);
+            
+
+        }
+        
+        // Create arrow markers
+        function createArrowMarkers(defs) {
+            defs.append("marker")
+                .attr("id", "arrowhead")
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 8).attr("refY", 0)
+                .attr("markerWidth", 5).attr("markerHeight", 5)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("fill", "#6b7280");
+        }
+        
+        // Draw concentric circles for depth visualization
+        function drawDepthCircles(g, radius, treeData) {
+            const maxDepth = Math.max(...treeData.descendants().map(d => d.depth));
+            
+            for (let i = 1; i <= maxDepth; i++) {
+                g.append("circle")
+                    .attr("r", radius * Math.pow(i / maxDepth, 3))
+                    .attr("fill", "none")
+                    .attr("stroke", "#e5e7eb")
+                    .attr("stroke-width", 1)
+                    .attr("stroke-dasharray", "3,3")
+                    .attr("opacity", 0.3);
+            }
+        }
+        
+        // Draw domain root in center
+        function drawDomainRoot(g, domain) {
+            const root = g.append("g").attr("class", "domain-root");
+            
+            root.append("circle")
+                .attr("r", 25)
+                .attr("fill", "url(#domain-gradient)")
+                .attr("stroke", "#6366f1")
+                .attr("stroke-width", 3)
+                .style("cursor", "pointer")
+                .style("filter", "drop-shadow(0px 4px 8px rgba(0,0,0,0.2))")
+                .on("click", () => inspectDomainRoot(domain))
+                .on("mouseover", function(event) {
+                    showTooltip(event, `<strong>${domain}</strong><br>Domain Root<br><em>Click to explore</em>`);
+                    d3.select(this).style("filter", "drop-shadow(0px 6px 12px rgba(0,0,0,0.3)) brightness(1.1)");
+                })
+                .on("mouseout", function() {
+                    hideTooltip();
+                    d3.select(this).style("filter", "drop-shadow(0px 4px 8px rgba(0,0,0,0.2))");
+                });
+            
+            root.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", "0.31em")
+                .style("fill", "white")
+                .style("font-size", "10px")
+                .style("font-weight", "700")
+                .style("text-shadow", "1px 1px 2px rgba(0,0,0,0.5)")
+                .style("pointer-events", "none")
+                .text("ROOT");
+        }
+        
+        // Function to convert polar to cartesian coordinates
+        function polarToCartesian(angle, radius) {
+            return {
+                x: radius * Math.cos(angle - Math.PI / 2),
+                y: radius * Math.sin(angle - Math.PI / 2)
+            };
+        }
+        
+        // Draw tree links
+        function drawTreeLinks(g, treeData) {
+            g.selectAll(".link")
+                .data(treeData.links())
+                .enter().append("path")
+                .attr("class", "link")
+                .attr("d", d => {
+                    const source = polarToCartesian(d.source.x, d.source.y);
+                    const target = polarToCartesian(d.target.x, d.target.y);
+                    
+                    // Create smooth radial curves
+                    const midRadius = (d.source.y + d.target.y) / 2;
+                    const midAngle = d.target.x;
+                    const mid = polarToCartesian(midAngle, midRadius);
+                    
+                    return `M${source.x},${source.y} Q${mid.x},${mid.y} ${target.x},${target.y}`;
+                })
+                .attr("fill", "none")
+                .attr("stroke", "#9ca3af")
+                .attr("stroke-width", 2)
+                .attr("opacity", 0.6)
+                .attr("marker-end", "url(#arrowhead)");
+        }
+        
+        // Draw tree nodes
+        function drawTreeNodes(g, treeData) {
+            const nodes = g.selectAll(".node")
+                .data(treeData.descendants().filter(d => d.depth > 0))
+                .enter().append("g")
+                .attr("class", "node")
+                .attr("transform", d => {
+                    const coords = polarToCartesian(d.x, d.y);
+                    return `translate(${coords.x},${coords.y})`;
+                });
+            
+            // Add node circles
+            nodes.append("circle")
+                .attr("r", d => getNodeRadius(d.data))
+                .attr("fill", d => getNodeFill(d.data))
+                .attr("stroke", d => getNodeStroke(d.data))
+                .attr("stroke-width", 2)
+                .style("cursor", "pointer")
+                .style("filter", "drop-shadow(0px 2px 4px rgba(0,0,0,0.2))")
+                .on("mouseover", function(event, d) {
+                    handleNodeHover(event, d, this);
+                })
+                .on("mouseout", function(event, d) {
+                    handleNodeMouseOut(event, d, this);
+                })
+                .on("click", function(event, d) {
+                    handleNodeClick(event, d, this);
+                });
+            
+            // Add node labels
+            nodes.append("text")
+                .attr("class", "node-label")
+                .attr("dy", "0.31em")
+                .attr("transform", d => {
+                    const angle = d.x;
+                    const isRightSide = angle < Math.PI;
+                    return isRightSide ? `translate(${getNodeRadius(d.data) + 8},0)` : 
+                                       `translate(${-(getNodeRadius(d.data) + 8)},0) rotate(180)`;
+                })
+                .style("text-anchor", d => d.x < Math.PI ? "start" : "end")
+                .style("fill", "#374151")
+                .style("font-size", "9px")
+                .style("font-weight", "600")
+                .style("pointer-events", "none")
+                .text(d => getNodeLabel(d.data));
+        }
+        
+        // Get node radius based on type and data
+        function getNodeRadius(data) {
+            if (data.type === 'aez') {
+                // Size AEZ nodes based on event count
+                const eventCount = data.event_count || 0;
+                return Math.max(8, Math.min(16, 8 + eventCount * 0.5));
+            }
+            if (data.type === 'lineage') return 10;
+            return 8; // Default for other types
+        }
+        
+        // Get node fill color based on type and data
+        function getNodeFill(data) {
+            if (data.type === 'aez') {
+                // Color based on temperature if available
+                if (data.temperature && data.temperature.current_temperature) {
+                    const temp = data.temperature.current_temperature;
+                    if (temp.includes('🔥 HOT')) return 'url(#hot-gradient)';
+                    if (temp.includes('🟡 WARM')) return 'url(#warm-gradient)';
+                    if (temp.includes('🟠 COOL')) return 'url(#cool-gradient)';
+                    if (temp.includes('❄️ COLD')) return 'url(#cold-gradient)';
+                }
+                return 'url(#aez-gradient)'; // Default orange gradient for AEZ nodes
+            }
+            if (data.type === 'lineage') return 'url(#lineage-gradient)'; // Blue gradient for lineage nodes
+            return '#6b7280';
+        }
+        
+        // Get node stroke color
+        function getNodeStroke(data) {
+            if (data.type === 'aez') {
+                // Stroke color based on temperature if available
+                if (data.temperature && data.temperature.current_temperature) {
+                    const temp = data.temperature.current_temperature;
+                    if (temp.includes('🔥 HOT')) return '#f9fd38';      // Dark red
+                    if (temp.includes('🟡 WARM')) return '#b93275';     // Dark orange
+                    if (temp.includes('🟠 COOL')) return '#5403a0';     // Orange
+                    if (temp.includes('❄️ COLD')) return '#0d0887';     // Ice blue
+                }
+                return '#5403a0'; // Default orange stroke for AEZ nodes
+            }
+            if (data.type === 'lineage') return '#1e40af';  // Blue stroke for lineages
+            return '#374151';
+        }
+        
+        // Get node label
+        function getNodeLabel(data) {
+            if (data.type === 'aez') {
+                const eventCount = data.event_count || 0;
+                return `AEZ-${data.id.slice(-6)} (${eventCount})`;
+            } else if (data.type === 'lineage') {
+                return `L-${data.id.slice(-6)}`;
+            }
+            return data.label || data.id.slice(-6);
+        }
+
+        // LEGACY FUNCTION - NOT USED (kept for reference)
+        // The actual rendering is done by renderMainTree() above
+        function renderD3Tree_LEGACY(svg, data, index) {
+            const container = svg.node().parentElement;
+            const bbox = container.getBoundingClientRect();
+            const width = bbox.width - 20;
+            const height = Math.max(1200, Math.min(1600, data.nodes.length * 120));
+            
+            svg.attr("width", width).attr("height", height);
+            
+            // Calculate radius for circular layout
+            const radius = Math.min(width, height) / 2 - 50;
+            const centerX = width / 2;
+            const centerY = height / 2;
+            
+            // Create arrow markers
+            const defs = svg.append("defs");
+            
+            // Blue arrow for lineage connections
+            defs.append("marker")
+                .attr("id", `arrowhead-blue-${index}`)
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 8)
+                .attr("refY", 0)
+                .attr("markerWidth", 5)
+                .attr("markerHeight", 5)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("fill", "#3b82f6");
+                
+            // Green arrow for AEZ connections
+            defs.append("marker")
+                .attr("id", `arrowhead-green-${index}`)
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 8)
+                .attr("refY", 0)
+                .attr("markerWidth", 5)
+                .attr("markerHeight", 5)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("fill", "#10b981");
+            
+            // Create gradient for center circle
+            const gradientCenter = defs.append("radialGradient")
+                .attr("id", `center-gradient-${index}`)
+                .attr("cx", "50%")
+                .attr("cy", "50%")
+                .attr("r", "50%");
+            gradientCenter.append("stop")
+                .attr("offset", "0%")
+                .attr("stop-color", "#8b5cf6")
+                .attr("stop-opacity", 0.8);
+            gradientCenter.append("stop")
+                .attr("offset", "100%")
+                .attr("stop-color", "#6366f1")
+                .attr("stop-opacity", 0.4);
+            
+            // Create tooltip
+            const tooltip = d3.select("#tooltip");
+            
+            // Convert flat data to hierarchical
+            const hierarchy = d3.stratify()
+                .id(d => d.id)
+                .parentId(d => d.parent)
+                (data.nodes);
+            
+            // Create radial tree layout
+            const treeLayout = d3.tree()
+                .size([2 * Math.PI, radius])
+                .separation((a, b) => (a.parent == b.parent ? 1 : 2) / a.depth);
+            
+            const treeData = treeLayout(hierarchy);
+            
+            // Main group centered in the SVG
+            const g = svg.append("g")
+                .attr("transform", `translate(${centerX},${centerY})`);
+            
+            // Add center domain circle
+            g.append("circle")
+                .attr("r", 20)
+                .attr("fill", `url(#center-gradient-${index})`)
+                .attr("stroke", "#6366f1")
+                .attr("stroke-width", 2)
+                .style("cursor", "pointer")
+                .on("mouseover", function(event) {
+                    const domain = data.nodes.length > 0 ? data.nodes[0].domain || "Domain" : "Domain";
+                    tooltip.style("display", "block")
+                        .html(`<strong>${domain}</strong><br>Domain Root<br><em>Click to ask about this domain</em>`)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 10) + "px");
+                })
+                .on("mouseout", function() {
+                    tooltip.style("display", "none");
+                })
+                .on("click", function() {
+                    const domain = data.nodes.length > 0 ? data.nodes[0].domain || "this domain" : "this domain";
+                    askPredefinedQuestion(`Tell me about the evolutionary patterns in ${domain}`);
+                });
+            
+            // Add center label
+            g.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", "0.31em")
+                .style("fill", "white")
+                .style("font-size", "10px")
+                .style("font-weight", "600")
+                .style("pointer-events", "none")
+                .text("ROOT");
+            
+            // Function to convert polar to cartesian coordinates
+            function polarToCartesian(angle, radius) {
+                return {
+                    x: radius * Math.cos(angle - Math.PI / 2),
+                    y: radius * Math.sin(angle - Math.PI / 2)
+                };
+            }
+            
+            // Draw radial links with curved paths
+            g.selectAll(".link")
+                .data(treeData.links())
+                .enter().append("path")
+                .attr("class", d => {
+                    const sourceType = d.source.data.type;
+                    const targetType = d.target.data.type;
+                    return sourceType === 'lineage' && targetType === 'lineage' ? 'link-lineage' : 'link-aez';
+                })
+                .attr("d", d => {
+                    const source = polarToCartesian(d.source.x, d.source.y);
+                    const target = polarToCartesian(d.target.x, d.target.y);
+                    
+                    // Create smooth radial curves
+                    const midRadius = (d.source.y + d.target.y) / 2;
+                    const midAngle = d.target.x;
+                    const mid = polarToCartesian(midAngle, midRadius);
+                    
+                    return `M${source.x},${source.y} Q${mid.x},${mid.y} ${target.x},${target.y}`;
+                })
+                .attr("marker-end", d => {
+                    const sourceType = d.source.data.type;
+                    const targetType = d.target.data.type;
+                    return sourceType === 'lineage' && targetType === 'lineage' ? 
+                        `url(#arrowhead-blue-${index})` : `url(#arrowhead-green-${index})`;
+                });
+            
+            // Draw concentric circles for depth visualization
+            const maxDepth = Math.max(...treeData.descendants().map(d => d.depth));
+            for (let i = 1; i <= maxDepth; i++) {
+                g.append("circle")
+                    .attr("r", (radius / maxDepth) * i)
+                    .attr("fill", "none")
+                    .attr("stroke", "#e2e8f0")
+                    .attr("stroke-width", 1)
+                    .attr("stroke-dasharray", "2,2")
+                    .attr("opacity", 0.3);
+            }
+            
+            // Draw nodes
+            const nodes = g.selectAll(".node")
+                .data(treeData.descendants().filter(d => d.depth > 0)) // Exclude root
+                .enter().append("g")
+                .attr("class", "node")
+                .attr("transform", d => {
+                    const coords = polarToCartesian(d.x, d.y);
+                    return `translate(${coords.x},${coords.y})`;
+                });
+            
+            // Add node shapes with enhanced styling
+            nodes.append("circle")
+                .attr("r", d => {
+                    if (d.data.type === 'lineage') return 10;
+                    return d.data.event_count ? Math.max(6, Math.min(12, d.data.event_count * 2)) : 6;
+                })
+                .attr("class", d => {
+                    if (d.data.type === 'lineage') return 'node-lineage';
+                    return d.data.active ? 'node-aez-active' : 'node-aez-inactive';
+                })
+                .style("cursor", "pointer")
+                .style("filter", "drop-shadow(0px 2px 4px rgba(0,0,0,0.2))")
+                .on("mouseover", function(event, d) {
+                    const tooltipContent = createTooltipContent(d.data);
+                    tooltip.style("display", "block")
+                        .html(tooltipContent)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 10) + "px");
+                    
+                    // Highlight node
+                    d3.select(this)
+                        .style("filter", "drop-shadow(0px 4px 8px rgba(0,0,0,0.4)) brightness(1.2)");
+                })
+                .on("mouseout", function() {
+                    tooltip.style("display", "none");
+                    d3.select(this)
+                        .style("filter", "drop-shadow(0px 2px 4px rgba(0,0,0,0.2))");
+                })
+                .on("click", function(event, d) {
+                    askAboutNode(d.data);
+                });
+            
+            // Add node labels with smart positioning
+            nodes.append("text")
+                .attr("class", "node-label")
+                .attr("dy", "0.31em")
+                .attr("transform", d => {
+                    // Position labels outside the circle
+                    const angle = d.x;
+                    const isRightSide = angle < Math.PI;
+                    return isRightSide ? `translate(15,0)` : `translate(-15,0) rotate(180)`;
+                })
+                .style("text-anchor", d => {
+                    const angle = d.x;
+                    return angle < Math.PI ? "start" : "end";
+                })
+                .style("fill", "#374151")
+                .style("font-size", "9px")
+                .style("font-weight", "600")
+                .style("pointer-events", "none")
+                .text(d => {
+                    const baseLabel = d.data.type === 'lineage' ? 
+                        `L-${d.data.id.slice(-6)}` : 
+                        `AEZ-${d.data.id.slice(-6)}`;
+                    if (d.data.event_count && d.data.event_count > 0) {
+                        return `${baseLabel} (${d.data.event_count})`;
+                    }
+                    return baseLabel;
+                });
+            
+            // Add interactive zoom and pan
+            const zoom = d3.zoom()
+                .scaleExtent([0.5, 3])
+                .on("zoom", function(event) {
+                    g.attr("transform", `translate(${centerX},${centerY}) ${event.transform}`);
+                });
+            
+            svg.call(zoom);
+            
+            // Add zoom controls
+            const controls = svg.append("g")
+                .attr("class", "zoom-controls")
+                .attr("transform", `translate(${width - 80}, 20)`);
+            
+            // Zoom in button
+            controls.append("circle")
+                .attr("r", 15)
+                .attr("fill", "#3b82f6")
+                .attr("stroke", "white")
+                .attr("stroke-width", 2)
+                .style("cursor", "pointer")
+                .on("click", function() {
+                    svg.transition().duration(300).call(zoom.scaleBy, 1.5);
+                });
+            
+            controls.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", "0.31em")
+                .style("fill", "white")
+                .style("font-size", "14px")
+                .style("font-weight", "bold")
+                .style("pointer-events", "none")
+                .text("+");
+            
+            // Zoom out button
+            controls.append("circle")
+                .attr("cy", 35)
+                .attr("r", 15)
+                .attr("fill", "#6b7280")
+                .attr("stroke", "white")
+                .attr("stroke-width", 2)
+                .style("cursor", "pointer")
+                .on("click", function() {
+                    svg.transition().duration(300).call(zoom.scaleBy, 0.67);
+                });
+            
+            controls.append("text")
+                .attr("y", 35)
+                .attr("text-anchor", "middle")
+                .attr("dy", "0.31em")
+                .style("fill", "white")
+                .style("font-size", "14px")
+                .style("font-weight", "bold")
+                .style("pointer-events", "none")
+                .text("−");
+            
+            // Reset zoom button
+            controls.append("circle")
+                .attr("cy", 70)
+                .attr("r", 15)
+                .attr("fill", "#10b981")
+                .attr("stroke", "white")
+                .attr("stroke-width", 2)
+                .style("cursor", "pointer")
+                .on("click", function() {
+                    svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+                });
+            
+            controls.append("text")
+                .attr("y", 70)
+                .attr("text-anchor", "middle")
+                .attr("dy", "0.31em")
+                .style("fill", "white")
+                .style("font-size", "10px")
+                .style("font-weight", "bold")
+                .style("pointer-events", "none")
+                .text("⌂");
+        }
+
+        // Node interaction handlers
+        function handleNodeHover(event, d, element) {
+            // Highlight node
+            d3.select(element)
+                .style("filter", "drop-shadow(0px 4px 8px rgba(0,0,0,0.4)) brightness(1.2)")
+                .transition()
+                .duration(200)
+                .attr("r", getNodeRadius(d.data) * 1.2);
+            
+            // Show semantic trail
+            showSemanticTrail(d);
+            
+            // Show tooltip
+            const tooltipContent = createTooltipContent(d.data);
+            showTooltip(event, tooltipContent);
+        }
+        
+        function handleNodeMouseOut(event, d, element) {
+            // Reset node appearance
+            d3.select(element)
+                .style("filter", "drop-shadow(0px 2px 4px rgba(0,0,0,0.2))")
+                .transition()
+                .duration(200)
+                .attr("r", getNodeRadius(d.data));
+            
+            // Hide semantic trail and tooltip
+            hideSemanticTrail();
+            hideTooltip();
+        }
+        
+        function handleNodeClick(event, d, element) {
+            // Prevent event bubbling
+            event.stopPropagation();
+            
+            // Highlight selected node
+            mainSvg.selectAll('.node circle').classed('selected', false);
+            d3.select(element).classed('selected', true);
+            
+            // Update inspector panel
+            inspectNode(d.data);
+            
+            // Animate click effect
+            d3.select(element)
+                .transition()
+                .duration(150)
+                .attr("r", getNodeRadius(d.data) * 1.5)
+                .transition()
+                .duration(150)
+                .attr("r", getNodeRadius(d.data));
+        }
+        
+        // Semantic trail functionality
+        function showSemanticTrail(d) {
+            const trailEl = document.getElementById('semantic-trail');
+            const contentEl = document.getElementById('trail-content');
+            
+            // Build path from root to current node
+            const path = [];
+            let current = d;
+            while (current.parent) {
+                path.unshift(current.data);
+                current = current.parent;
+            }
+            
+            if (path.length > 0) {
+                const pathText = path.map(node => {
+                    if (node.type === 'aez') return `AEZ-${node.id.slice(-6)}`;
+                    if (node.type === 'event') return node.label || `Event-${node.id.slice(-8)}`;
+                    return node.label || node.id.slice(-6);
+                }).join(' → ');
+                
+                contentEl.textContent = pathText;
+                trailEl.classList.remove('hidden');
+                semanticTrailActive = true;
+            }
+        }
+        
+        function hideSemanticTrail() {
+            if (semanticTrailActive) {
+                document.getElementById('semantic-trail').classList.add('hidden');
+                semanticTrailActive = false;
+            }
+        }
+        
+        // Inspector panel functions
+        function inspectNode(data) {
+            const defaultEl = document.getElementById('inspector-default');
+            const detailsEl = document.getElementById('inspector-details');
+            
+            defaultEl.classList.add('hidden');
+            detailsEl.classList.remove('hidden');
+            
+            // Build detailed content based on node type
+            const content = buildNodeInspectorContent(data);
+            detailsEl.innerHTML = content;
+        }
+        
+        function inspectDomainRoot(domain) {
+            const defaultEl = document.getElementById('inspector-default');
+            const detailsEl = document.getElementById('inspector-details');
+            
+            defaultEl.classList.add('hidden');
+            detailsEl.classList.remove('hidden');
+            
+            const domainData = phylogenyData.domain_summaries[domain];
+            const content = `
+                <div class="p-4">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">${domain}</h3>
+                            <p class="text-sm text-gray-600">Domain Root</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-blue-50 p-3 rounded-lg">
+                                <div class="font-medium text-blue-900">${domainData.total_events}</div>
+                                <div class="text-blue-700">Total Events</div>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg">
+                                <div class="font-medium text-green-900">${domainData.active_aezs}</div>
+                                <div class="text-green-700">Active Clusters</div>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg">
+                                <div class="font-medium text-purple-900">${domainData.total_lineages}</div>
+                                <div class="text-purple-700">Lineages</div>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                                <div class="font-medium text-gray-900">${domainData.total_aezs}</div>
+                                <div class="text-gray-700">Total AEZs</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t pt-4">
+                            <h4 class="font-medium text-gray-900 mb-2">AI Analysis</h4>
+                            <div class="space-y-2">
+                                <button onclick="askPredefinedQuestion('Tell me about the ${domain} domain evolution')" 
+                                        class="w-full text-left px-3 py-2 text-sm bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors">
+                                    🤖 Analyze this domain
+                                </button>
+                            </div>
+                            <div class="mt-3 text-xs text-gray-500 italic">
+                                💬 Ask questions about this domain in the chat below
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            detailsEl.innerHTML = content;
+        }
+        
+        function buildNodeInspectorContent(data) {
+            if (data.type === 'aez') {
+                const eventsList = data.event_details && data.event_details.length > 0 ? 
+                    data.event_details.map((event, index) => `
+                        <div class="bg-white p-2 rounded border border-gray-200 hover:bg-gray-50 transition-colors">
+                            <div class="text-sm text-gray-900 mb-1 leading-tight">${event.summary.substring(0, 300)}${event.summary.length > 300 ? '...' : ''}</div>
+                            <div class="flex items-center gap-3 text-xs text-gray-500">
+                                <span class="font-mono">#${(index + 1).toString().padStart(2, '0')}</span>
+                                ${event.date ? `<span>📅 ${event.date}</span>` : ''}
+                                ${event.category ? `<span>🏷️ ${event.category}</span>` : ''}
+                                <span class="ml-auto font-mono">${event.id.slice(-8)}</span>
+                            </div>
+                        </div>
+                    `).join('') : '<div class="text-sm text-gray-500 italic">No events available</div>';
+
+                return `
+                    <div class="p-4">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-700 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">AEZ-${data.id.slice(-8)}</h3>
+                                <p class="text-sm text-gray-600">Semantic Cluster</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="bg-orange-50 p-3 rounded-lg">
+                                    <div class="font-medium text-orange-900">${data.event_count || 0}</div>
+                                    <div class="text-orange-700">Events</div>
+                                </div>
+                                <div class="bg-green-50 p-3 rounded-lg">
+                                    <div class="font-medium text-green-900">Active</div>
+                                    <div class="text-green-700">Cluster Status</div>
+                                </div>
+                            </div>
+                            
+                            ${data.temperature && data.temperature.current_temperature ? `
+                            <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg border border-purple-200">
+                                <h4 class="font-medium text-purple-900 mb-3 flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                    Semantic Temperature
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-700">Current Status:</span>
+                                        <span class="text-sm font-medium">${data.temperature.current_temperature}</span>
+                                    </div>
+                                    ${data.temperature.current_divergence !== null ? `
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-700">Divergence Score:</span>
+                                        <span class="text-sm font-mono">${(data.temperature.current_divergence * 100).toFixed(1)}%</span>
+                                    </div>
+                                    ` : ''}
+                                    ${data.temperature.trend ? `
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-700">Trend:</span>
+                                        <span class="text-sm">${data.temperature.trend}</span>
+                                    </div>
+                                    ` : ''}
+                                    <div class="mt-3 pt-3 border-t border-purple-200">
+                                        <div class="text-xs text-purple-700">
+                                            <div class="mb-1"><span class="font-medium">🔥 HOT:</span> Ready to split (≥50% divergence)</div>
+                                            <div class="mb-1"><span class="font-medium">🟡 WARM:</span> Approaching split (35-49%)</div>
+                                            <div class="mb-1"><span class="font-medium">🟠 COOL:</span> Moderate diversity (20-34%)</div>
+                                            <div><span class="font-medium">❄️ COLD:</span> Highly coherent (<20%)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            ` : ''}
+                            
+                            ${data.event_details && data.event_details.length > 0 ? `
+                                <div class="border-t pt-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h4 class="font-medium text-gray-900">Events in this Cluster</h4>
+                                        <span class="text-xs text-gray-500 font-medium">${data.event_details.length} events</span>
+                                    </div>
+                                    <div class="space-y-2 max-h-80 overflow-y-auto scrollbar-hide border rounded-lg bg-gray-50 p-3">
+                                        ${eventsList}
+                                        ${data.event_details.length > 10 ? `
+                                            <div class="text-center pt-2 border-t border-gray-200 mt-3">
+                                                <span class="text-xs text-gray-500 italic">Scroll to see all ${data.event_details.length} events</span>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            <div class="border-t pt-4">
+                                <h4 class="font-medium text-gray-900 mb-2">AI Analysis</h4>
+                                <div class="space-y-2">
+                                    <button onclick="askAboutAEZ('${data.id}', ${data.event_count})" 
+                                            class="w-full text-left px-3 py-2 text-sm bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors">
+                                        🤖 Analyze this cluster
+                                    </button>
+                                    <button onclick="analyzeEvolutionaryPath('${data.id}')" 
+                                            class="w-full text-left px-3 py-2 text-sm bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors">
+                                        🧬 Compare with siblings
+                                    </button>
+                                </div>
+                                <div class="mt-3 text-xs text-gray-500 italic">
+                                    💬 Ask questions about this AEZ in the chat below
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (data.type === 'lineage') {
+                return `
+                    <div class="p-4">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Lineage-${data.id.slice(-8)}</h3>
+                                <p class="text-sm text-gray-600">Evolutionary Branch Point</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-indigo-50 p-3 rounded-lg">
+                                <div class="font-medium text-indigo-900">${data.children_count || 0}</div>
+                                <div class="text-indigo-700">Child Nodes</div>
+                            </div>
+                            
+                            <div class="border-t pt-4">
+                                <h4 class="font-medium text-gray-900 mb-2">AI Analysis</h4>
+                                <div class="space-y-2">
+                                    <button onclick="askAboutLineage('${data.id}')" 
+                                            class="w-full text-left px-3 py-2 text-sm bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors">
+                                        🤖 Analyze this lineage
+                                    </button>
+                                </div>
+                                <div class="mt-3 text-xs text-gray-500 italic">
+                                    💬 Ask questions about this lineage in the chat below
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Default content for unknown types
+            return `
+                <div class="p-4">
+                    <div class="text-center">
+                        <h3 class="font-semibold text-gray-900 mb-2">${data.label || data.id}</h3>
+                        <p class="text-sm text-gray-600">Node details not available</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function clearInspector() {
+            document.getElementById('inspector-default').classList.remove('hidden');
+            document.getElementById('inspector-details').classList.add('hidden');
+        }
+        
+        // Utility functions
+        function showTooltip(event, content) {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.innerHTML = content;
+            tooltip.style.display = 'block';
+            tooltip.style.left = (event.pageX + 10) + 'px';
+            tooltip.style.top = (event.pageY - 10) + 'px';
+        }
+        
+        function hideTooltip() {
+            document.getElementById('tooltip').style.display = 'none';
+        }
+        
+        function showError(message) {
+            const emptyEl = document.getElementById('main-empty');
+            emptyEl.innerHTML = `
+                <div class="text-center">
+                    <svg class="mx-auto h-16 w-16 text-red-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Error Loading Tree</h3>
+                    <p class="text-gray-600">${message}</p>
+                </div>
+            `;
+            emptyEl.style.display = 'flex';
+        }
+        
+        function addZoomControls() {
+            // Zoom controls are handled by the main SVG zoom behavior
+            // Additional UI controls could be added here if needed
+        }
+        
+        // AI Analysis functions
+        async function askAboutAEZ(aezId, eventCount) {
+            // Find the AEZ data in the current tree
+            const aezNode = findNodeInTree(aezId);
+            if (aezNode) {
+                try {
+                    // Show loading message
+                    const loadingId = addChatMessage('assistant', '🤖 Analyzing AEZ cluster with AI reasoning...', true);
+                    
+                    // Call AI reasoning endpoint
+                    const response = await fetch('/api/reasoning/analyze-aez', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            aez_data: aezNode
+                        }),
+                    });
+                    
+                    const data = await response.json();
+                    
+                    // Remove loading message
+                    document.getElementById(loadingId).remove();
+                    
+                    if (data.status === 'success') {
+                        // Add AI analysis to chat
+                        addChatMessage('assistant', `**🧠 AI Analysis of AEZ-${aezId.slice(-8)}**\n\n${data.analysis}`);
+                    } else {
+                        addChatMessage('error', `Analysis failed: ${data.error}`);
+                    }
+                    
+                } catch (error) {
+                    console.error('Error getting AI analysis:', error);
+                    // Fallback to simple chat
+                    askPredefinedQuestion(`Tell me about AEZ cluster ${aezId.slice(-8)} which contains ${eventCount} events. What semantic patterns do you see?`);
+                }
+            } else {
+                // Fallback to simple chat
+                askPredefinedQuestion(`Tell me about AEZ cluster ${aezId.slice(-8)} which contains ${eventCount} events. What semantic patterns do you see?`);
+            }
+        }
+        
+        function askAboutLineage(lineageId) {
+            askPredefinedQuestion(`Analyze the lineage node ${lineageId.slice(-8)} and its role in the evolutionary tree structure`);
+        }
+
+        // Create tooltip content
+        function createTooltipContent(data) {
+            if (data.type === 'aez') {
+                let temperatureInfo = '';
+                if (data.temperature && data.temperature.current_temperature) {
+                    const temp = data.temperature.current_temperature;
+                    const divergence = data.temperature.current_divergence;
+                    temperatureInfo = `<br>Temperature: ${temp}`;
+                    if (divergence !== null && divergence !== undefined) {
+                        temperatureInfo += `<br>Divergence: ${(divergence * 100).toFixed(1)}%`;
+                    }
+                }
+                
+                return `<strong>AEZ-${data.id.slice(-8)}</strong><br>
+                        Type: Active Semantic Cluster<br>
+                        Events: ${data.event_count || 0}${temperatureInfo}<br>
+                        <em>Click to explore events</em>`;
+            } else if (data.type === 'lineage') {
+                return `<strong>Lineage-${data.id.slice(-8)}</strong><br>
+                        Type: Evolutionary Branch<br>
+                        Children: ${data.children_count || 0}<br>
+                        <em>Click to inspect</em>`;
+            } else if (data.type === 'domain') {
+                return `<strong>${data.label}</strong><br>
+                        Type: Domain Root<br>
+                        <em>Click to explore</em>`;
+            }
+            
+            return `<strong>${data.label || data.id}</strong><br>
+                    Type: ${data.type}<br>
+                    <em>Click to inspect</em>`;
+        }
+
+        // Chat functionality
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addChatMessage('user', message);
+            input.value = '';
+            
+            // Show typing indicator
+            const typingId = addChatMessage('assistant', '🤖 Processing with AI reasoning...', true);
+            
+            try {
+                // Route all questions through reasoning module
+                const response = await fetch('/api/reasoning/free-question', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        question: message,
+                        context_data: {
+                            current_domain: currentDomain,
+                            phylogeny_summary: phylogenyData,
+                            visible_tree: currentTreeData
+                        }
+                    }),
+                });
+                
+                const data = await response.json();
+                
+                // Remove typing indicator
+                document.getElementById(typingId).remove();
+                
+                if (data.status === 'success') {
+                    // Add AI reasoning response
+                    addChatMessage('assistant', data.analysis);
+                    
+                    // Update chat history
+                    chatHistory.push({ role: 'user', content: message });
+                    chatHistory.push({ role: 'assistant', content: data.analysis });
+                } else {
+                    addChatMessage('error', `AI reasoning failed: ${data.error || 'Unknown error'}`);
+                }
+                
+            } catch (error) {
+                console.error('Error sending message:', error);
+                document.getElementById(typingId).remove();
+                addChatMessage('error', 'Sorry, there was an error processing your question with AI reasoning.');
+            }
+        }
+
+        function addChatMessage(role, content, isTemporary = false) {
+            const messagesDiv = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            const messageId = isTemporary ? `temp-${Date.now()}` : null;
+            
+            if (messageId) messageDiv.id = messageId;
+            
+            let className = 'chat-message p-3 rounded-lg ';
+            
+            if (role === 'user') {
+                className += 'bg-purple-100 text-purple-900 ml-4';
+            } else if (role === 'error') {
+                className += 'bg-red-100 text-red-900 mr-4';
+            } else {
+                className += 'bg-gray-100 text-gray-900 mr-4';
+            }
+            
+            messageDiv.className = className;
+            
+            if (role === 'user') {
+                messageDiv.innerHTML = `<div class="font-medium text-xs text-purple-600 mb-1">You</div><div>${content}</div>`;
+            } else if (role === 'assistant') {
+                // Preserve line breaks and basic formatting for AI responses
+                const formattedContent = content.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>');
+                messageDiv.innerHTML = `<div class="font-medium text-xs text-gray-600 mb-1">AI Assistant</div><div style="white-space: pre-wrap; line-height: 1.5;">${formattedContent}</div>`;
+            } else {
+                messageDiv.innerHTML = `<div>${content}</div>`;
+            }
+            
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            
+            return messageId;
+        }
+
+        function askAboutNode(nodeData) {
+            const question = `Tell me about this ${nodeData.type} node: ${nodeData.label}. What can you infer about its role in the semantic evolution?`;
+            document.getElementById('chat-input').value = question;
+            sendMessage();
+        }
+
+        // Utility function to ask predefined questions
+        function askPredefinedQuestion(question) {
+            document.getElementById('chat-input').value = question;
+            sendMessage();
+        }
+        
+        // Helper function to find node data in current tree
+        function findNodeInTree(nodeId) {
+            if (!currentTreeData || !currentTreeData.nodes) return null;
+            
+            return currentTreeData.nodes.find(node => node.id === nodeId);
+        }
+        
+        // Analyze evolutionary path and sibling differences
+        async function analyzeEvolutionaryPath(aezId) {
+            try {
+                // Show loading message
+                const loadingId = addChatMessage('assistant', '🧬 Analyzing evolutionary path and sibling differences...', true);
+                
+                // First, get the evolutionary path data
+                const pathResponse = await fetch(`/api/phylogeny/evolutionary-path/${encodeURIComponent(aezId)}`);
+                if (!pathResponse.ok) {
+                    throw new Error('Failed to fetch evolutionary path data');
+                }
+                
+                const pathData = await pathResponse.json();
+                
+                // Then, analyze with AI reasoning
+                const analysisResponse = await fetch('/api/reasoning/explain-path', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        path_data: pathData
+                    }),
+                });
+                
+                const analysisData = await analysisResponse.json();
+                
+                // Remove loading message
+                document.getElementById(loadingId).remove();
+                
+                if (analysisData.status === 'success') {
+                    // Add comprehensive analysis to chat
+                    const title = `**🧬 Evolutionary Analysis: AEZ-${aezId.slice(-8)}**`;
+                    const siblings = pathData.siblings.length;
+                    const context = siblings > 0 ? 
+                        `\n*Comparing with ${siblings} sibling cluster${siblings > 1 ? 's' : ''} from the same evolutionary split*\n\n` :
+                        `\n*This AEZ has no current siblings (unique branch)*\n\n`;
+                    
+                    addChatMessage('assistant', `${title}${context}${analysisData.analysis}`);
+                } else {
+                    addChatMessage('error', `Evolutionary analysis failed: ${analysisData.error}`);
+                }
+                
+            } catch (error) {
+                console.error('Error analyzing evolutionary path:', error);
+                
+                // Remove loading message if it exists
+                const loadingEl = document.querySelector('[id^="temp-"]');
+                if (loadingEl) loadingEl.remove();
+                
+                // Fallback to simple question
+                askPredefinedQuestion(`Analyze the evolutionary path and semantic differences for AEZ ${aezId.slice(-8)}. How does it differ from its sibling clusters?`);
+            }
+        }
+
+        // Chat expand/minimize functionality
+        function toggleChatExpanded() {
+            const chatSection = document.getElementById('chat-section');
+            const expandBtn = document.getElementById('chat-expand-btn');
+            const body = document.body;
+            
+            chatExpanded = !chatExpanded;
+            
+            if (chatExpanded) {
+                // Add expanded classes and overlay
+                chatSection.classList.add('chat-expanded');
+                
+                // Create overlay to close when clicking outside
+                const overlay = document.createElement('div');
+                overlay.className = 'chat-expand-overlay';
+                overlay.onclick = () => toggleChatExpanded();
+                body.appendChild(overlay);
+                
+                // Update button icon to minimize
+                expandBtn.innerHTML = `
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                `;
+                expandBtn.title = "Minimize chat";
+                
+                // Focus on chat input for better UX
+                setTimeout(() => {
+                    document.getElementById('chat-input').focus();
+                }, 100);
+                
+            } else {
+                // Remove expanded classes and overlay
+                chatSection.classList.remove('chat-expanded');
+                
+                // Remove overlay
+                const overlay = document.querySelector('.chat-expand-overlay');
+                if (overlay) overlay.remove();
+                
+                // Update button icon to expand
+                expandBtn.innerHTML = `
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                    </svg>
+                `;
+                expandBtn.title = "Expand chat for better markdown reading";
+            }
+        }
+
+        // Close expanded chat on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && chatExpanded) {
+                toggleChatExpanded();
+            }
+        });
+    </script>
+</body>
+</html> 

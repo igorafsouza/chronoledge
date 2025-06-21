@@ -1,0 +1,661 @@
+{
+  "date_id": "2025_June_14",
+  "extraction_type": "current",
+  "extraction_timestamp": "2025-06-18T08:16:28.609457",
+  "event_count": 12,
+  "events": [
+    {
+      "summary": "Iran and Israel continue to launch missiles and drones at each other after the preemptive strike on Iran yesterday. Israel targeted Iran's Ministry of Defence headquarters while Iran retaliated by launching missiles at Tel Aviv and Haifa . (AP)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": true,
+        "temporal_reference": "yesterday",
+        "days_offset": -1,
+        "is_follow_up": true
+      },
+      "links": [
+        {
+          "text": "Iran",
+          "url": "https://en.wikipedia.org/wiki/Iran",
+          "type": "internal"
+        },
+        {
+          "text": "Israel",
+          "url": "https://en.wikipedia.org/wiki/Israel",
+          "type": "internal"
+        },
+        {
+          "text": "drones",
+          "url": "https://en.wikipedia.org/wiki/Drone_warfare",
+          "type": "internal"
+        },
+        {
+          "text": "preemptive strike",
+          "url": "https://en.wikipedia.org/wiki/Preemptive_war",
+          "type": "internal"
+        },
+        {
+          "text": "Ministry of Defence",
+          "url": "https://en.wikipedia.org/wiki/Ministry_of_Defence_and_Armed_Forces_Logistics_(Iran)",
+          "type": "internal"
+        },
+        {
+          "text": "Tel Aviv",
+          "url": "https://en.wikipedia.org/wiki/Tel_Aviv",
+          "type": "internal"
+        },
+        {
+          "text": "Haifa",
+          "url": "https://en.wikipedia.org/wiki/Haifa",
+          "type": "internal"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/iran-israel-missile-drone-attacks-nuclear-a8b23f58b502ed77a20a9d843bf30f76",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "At least 13 Israelis are killed and over 200 others are injured in an Iranian ballistic missile attack on Bat Yam . ( The Times of Israel )",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israelis",
+          "url": "https://en.wikipedia.org/wiki/Israelis",
+          "type": "internal"
+        },
+        {
+          "text": "ballistic missile",
+          "url": "https://en.wikipedia.org/wiki/Ballistic_missile",
+          "type": "internal"
+        },
+        {
+          "text": "Bat Yam",
+          "url": "https://en.wikipedia.org/wiki/Bat_Yam",
+          "type": "internal"
+        },
+        {
+          "text": "(The Times of Israel)",
+          "url": "https://www.timesofisrael.com/liveblog-june-15-2025/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "At least 79 Palestinians are killed by Israeli fire across the Gaza Strip , including 15 people near a Gaza Humanitarian Foundation (GHF) site, according to the Gaza Health Ministry . (Al Jazeera)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Gaza war > Rafah aid distribution killings",
+      "full_category": "Armed conflicts and attacks > Gaza war > Rafah aid distribution killings",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Palestinians",
+          "url": "https://en.wikipedia.org/wiki/Palestinians",
+          "type": "internal"
+        },
+        {
+          "text": "Israeli",
+          "url": "https://en.wikipedia.org/wiki/Israel",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza Strip",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Strip",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza Humanitarian Foundation",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Humanitarian_Foundation",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza Health Ministry",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Health_Ministry",
+          "type": "internal"
+        },
+        {
+          "text": "(Al Jazeera)",
+          "url": "https://www.aljazeera.com/news/2025/6/14/israel-kills-at-least-58-people-in-gaza-many-at-us-backed-aid-site-medics",
+          "type": "external"
+        }
+      ],
+      "level": 2,
+      "topic_path": [
+        "Gaza war",
+        "Rafah aid distribution killings"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "At least 100 people are killed, including many who were burned to death , hundreds of others are injured, and dozens are still missing, in an attack by unidentified gunmen in Guma , Benue State , Nigeria . ( Star Tribune ) (AP)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Herder-farmer conflicts in Nigeria",
+      "full_category": "Armed conflicts and attacks > Herder-farmer conflicts in Nigeria",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "burned to death",
+          "url": "https://en.wikipedia.org/wiki/Death_by_burning",
+          "type": "internal"
+        },
+        {
+          "text": "Guma",
+          "url": "https://en.wikipedia.org/wiki/Guma,_Nigeria",
+          "type": "internal"
+        },
+        {
+          "text": "Benue State",
+          "url": "https://en.wikipedia.org/wiki/Benue_State",
+          "type": "internal"
+        },
+        {
+          "text": "Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Nigeria",
+          "type": "internal"
+        },
+        {
+          "text": "(Star Tribune)",
+          "url": "https://www.startribune.com/at-least-100-people-killed-by-gunmen-in-north-central-nigeria-rights-group-says/601373190",
+          "type": "external"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/nigeria-attack-village-guma-amnesty-44c89b8dec357711293edc52e2b016a0",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Herder-farmer conflicts in Nigeria"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "The death toll from flooding caused by a winter storm in the Eastern Cape , South Africa , earlier this week increases to 86, as police continue to find bodies in the water. (AP) (TV360 Nigeria)",
+      "category": "Disasters and accidents",
+      "subcategory": "2025 South Africa floods",
+      "full_category": "Disasters and accidents > 2025 South Africa floods",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "flooding",
+          "url": "https://en.wikipedia.org/wiki/Flood",
+          "type": "internal"
+        },
+        {
+          "text": "winter storm",
+          "url": "https://en.wikipedia.org/wiki/Winter_storm",
+          "type": "internal"
+        },
+        {
+          "text": "Eastern Cape",
+          "url": "https://en.wikipedia.org/wiki/Eastern_Cape",
+          "type": "internal"
+        },
+        {
+          "text": "South Africa",
+          "url": "https://en.wikipedia.org/wiki/South_Africa",
+          "type": "internal"
+        },
+        {
+          "text": "police",
+          "url": "https://en.wikipedia.org/wiki/South_African_Police_Service",
+          "type": "internal"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/floods-south-africa-mthatha-weather-e80a4dcedd9e34acbd2a9778e568931d",
+          "type": "external"
+        },
+        {
+          "text": "(TV360 Nigeria)",
+          "url": "https://www.tv360nigeria.com/south-africa-flood-death-toll-rises-to-86-as-ramaphosa-blames-climate-change/",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "2025 South Africa floods"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "At least 19 people are killed in floods and landslides caused by heavy rainfall in Kinshasa , Democratic Republic of the Congo . (AP) ( Niagara Falls Review )",
+      "category": "Disasters and accidents",
+      "subcategory": null,
+      "full_category": "Disasters and accidents",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "landslides",
+          "url": "https://en.wikipedia.org/wiki/Landslide",
+          "type": "internal"
+        },
+        {
+          "text": "Kinshasa",
+          "url": "https://en.wikipedia.org/wiki/Kinshasa",
+          "type": "internal"
+        },
+        {
+          "text": "Democratic Republic of the Congo",
+          "url": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo",
+          "type": "internal"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/congo-flood-kinshasa-f6968403a540324a7d1e8f46b9f2e5b5",
+          "type": "external"
+        },
+        {
+          "text": "(Niagara Falls Review)",
+          "url": "https://www.niagarafallsreview.ca/life/heavy-rains-flood-congo-s-capital-killing-at-least-19-people/article_3bb337bf-b5aa-5375-a838-07f4c7f6d9dc.html",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "At least six people are killed and two others are missing in flash floods in Ohio County , West Virginia , United States. (WVPB)",
+      "category": "Disasters and accidents",
+      "subcategory": null,
+      "full_category": "Disasters and accidents",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "flash floods",
+          "url": "https://en.wikipedia.org/wiki/Flash_flood",
+          "type": "internal"
+        },
+        {
+          "text": "Ohio County",
+          "url": "https://en.wikipedia.org/wiki/Ohio_County,_West_Virginia",
+          "type": "internal"
+        },
+        {
+          "text": "West Virginia",
+          "url": "https://en.wikipedia.org/wiki/West_Virginia",
+          "type": "internal"
+        },
+        {
+          "text": "(WVPB)",
+          "url": "https://wvpublic.org/at-least-five-dead-four-missing-from-wheeling-area-after-flash-flood-saturday-night/",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Minnesota state senator John Hoffman , state representative and former speaker Melissa Hortman , and their spouses are shot in two targeted spree shootings at their homes in Brooklyn Park and Champlin , Minnesota , United States . Hortman and her husband are killed, while the conditions of the Hoffmans are \"grave\". (ABC News) (BNO News) (KMSP-TV)",
+      "category": "Law and crime",
+      "subcategory": "2025 shootings of Minnesota legislators",
+      "full_category": "Law and crime > 2025 shootings of Minnesota legislators",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Minnesota state senator",
+          "url": "https://en.wikipedia.org/wiki/Minnesota_Senate",
+          "type": "internal"
+        },
+        {
+          "text": "John Hoffman",
+          "url": "https://en.wikipedia.org/wiki/John_Hoffman_(Minnesota_politician)",
+          "type": "internal"
+        },
+        {
+          "text": "state representative",
+          "url": "https://en.wikipedia.org/wiki/Minnesota_House_of_Representatives",
+          "type": "internal"
+        },
+        {
+          "text": "speaker",
+          "url": "https://en.wikipedia.org/wiki/List_of_speakers_of_the_Minnesota_House_of_Representatives",
+          "type": "internal"
+        },
+        {
+          "text": "Melissa Hortman",
+          "url": "https://en.wikipedia.org/wiki/Melissa_Hortman",
+          "type": "internal"
+        },
+        {
+          "text": "targeted spree shootings",
+          "url": "https://en.wikipedia.org/wiki/Assassination_attempt",
+          "type": "internal"
+        },
+        {
+          "text": "Brooklyn Park",
+          "url": "https://en.wikipedia.org/wiki/Brooklyn_Park,_Minnesota",
+          "type": "internal"
+        },
+        {
+          "text": "Champlin",
+          "url": "https://en.wikipedia.org/wiki/Champlin,_Minnesota",
+          "type": "internal"
+        },
+        {
+          "text": "Minnesota",
+          "url": "https://en.wikipedia.org/wiki/Minnesota",
+          "type": "internal"
+        },
+        {
+          "text": "United States",
+          "url": "https://en.wikipedia.org/wiki/United_States",
+          "type": "internal"
+        },
+        {
+          "text": "(ABC News)",
+          "url": "https://abcnews.go.com/US/2-minnesota-lawmakers-shot-targeted-incident-officials/story?id=122840751",
+          "type": "external"
+        },
+        {
+          "text": "(BNO News)",
+          "url": "https://bnonews.com/index.php/2025/06/shootings-at-homes-of-2-politicians-in-minnesota/",
+          "type": "external"
+        },
+        {
+          "text": "(KMSP-TV)",
+          "url": "https://www.fox9.com/news/brooklyn-park-champlin-shootings-suspect-impersonating-police",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "2025 shootings of Minnesota legislators"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Protests against the second presidency of Donald Trump",
+      "category": "Politics and elections",
+      "subcategory": "Protests against Donald Trump",
+      "full_category": "Politics and elections > Protests against Donald Trump",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Protests against the second presidency of Donald Trump",
+          "url": "https://en.wikipedia.org/wiki/Protests_against_the_second_presidency_of_Donald_Trump",
+          "type": "internal"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Protests against Donald Trump"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "A series of protests occur across the United States in all 50 states , the same day as the United States Army military parade in Washington DC . (Politico) ( The New York Times )",
+      "category": "Politics and elections",
+      "subcategory": "Protests against Donald Trump",
+      "full_category": "Politics and elections > Protests against Donald Trump",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "protests",
+          "url": "https://en.wikipedia.org/wiki/No_Kings_protests",
+          "type": "internal"
+        },
+        {
+          "text": "United States",
+          "url": "https://en.wikipedia.org/wiki/United_States",
+          "type": "internal"
+        },
+        {
+          "text": "states",
+          "url": "https://en.wikipedia.org/wiki/U.S._state",
+          "type": "internal"
+        },
+        {
+          "text": "United States Army",
+          "url": "https://en.wikipedia.org/wiki/United_States_Army",
+          "type": "internal"
+        },
+        {
+          "text": "military parade",
+          "url": "https://en.wikipedia.org/wiki/U.S._Army_250th_Anniversary_Parade",
+          "type": "internal"
+        },
+        {
+          "text": "Washington DC",
+          "url": "https://en.wikipedia.org/wiki/Washington,_D.C.",
+          "type": "internal"
+        },
+        {
+          "text": "(Politico)",
+          "url": "https://www.politico.com/news/2025/06/14/no-kings-protest-trump-00406243",
+          "type": "external"
+        },
+        {
+          "text": "(The New York Times)",
+          "url": "https://www.nytimes.com/2025/06/14/us/protests-cities-no-kings.html",
+          "type": "external"
+        }
+      ],
+      "level": 2,
+      "topic_path": [
+        "Protests against Donald Trump"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Anti-immigration protestors use fireworks and Molotov cocktails against riot police across Northern Ireland , injuring at least 63 police officers . Police deploy water cannons in return to control the protestors. (Reuters) (DW)",
+      "category": "Politics and elections",
+      "subcategory": "2025 Northern Ireland riots",
+      "full_category": "Politics and elections > 2025 Northern Ireland riots",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Anti-immigration",
+          "url": "https://en.wikipedia.org/wiki/Opposition_to_immigration",
+          "type": "internal"
+        },
+        {
+          "text": "fireworks",
+          "url": "https://en.wikipedia.org/wiki/Firework",
+          "type": "internal"
+        },
+        {
+          "text": "Molotov cocktails",
+          "url": "https://en.wikipedia.org/wiki/Molotov_cocktail",
+          "type": "internal"
+        },
+        {
+          "text": "riot police",
+          "url": "https://en.wikipedia.org/wiki/Riot_police",
+          "type": "internal"
+        },
+        {
+          "text": "Northern Ireland",
+          "url": "https://en.wikipedia.org/wiki/Northern_Ireland",
+          "type": "internal"
+        },
+        {
+          "text": "police officers",
+          "url": "https://en.wikipedia.org/wiki/Police_Service_of_Northern_Ireland",
+          "type": "internal"
+        },
+        {
+          "text": "water cannons",
+          "url": "https://en.wikipedia.org/wiki/Water_cannon",
+          "type": "internal"
+        },
+        {
+          "text": "control",
+          "url": "https://en.wikipedia.org/wiki/Crowd_control",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/uk/police-attacked-northern-irish-violence-spreads-another-town-2025-06-12/",
+          "type": "external"
+        },
+        {
+          "text": "(DW)",
+          "url": "https://www.dw.com/en/northern-ireland-police-deploy-water-cannon-against-rioters/a-72905427",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "2025 Northern Ireland riots"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Elon Musk announces on X (formerly Twitter) that Starlink will provide internet access to citizens in Tehran , Iran after the Iranian government shut down the internet in the country due to Israeli strikes against the nation . ( The Times of Israel )",
+      "category": "Science and technology",
+      "subcategory": "Internet censorship in Iran",
+      "full_category": "Science and technology > Internet censorship in Iran",
+      "date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "reporting_date": "June\u00a014,\u00a02025(2025-06-14)(Saturday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Elon Musk",
+          "url": "https://en.wikipedia.org/wiki/Elon_Musk",
+          "type": "internal"
+        },
+        {
+          "text": "X",
+          "url": "https://en.wikipedia.org/wiki/Twitter",
+          "type": "internal"
+        },
+        {
+          "text": "Starlink",
+          "url": "https://en.wikipedia.org/wiki/Starlink",
+          "type": "internal"
+        },
+        {
+          "text": "Tehran",
+          "url": "https://en.wikipedia.org/wiki/Tehran",
+          "type": "internal"
+        },
+        {
+          "text": "Iran",
+          "url": "https://en.wikipedia.org/wiki/Iran",
+          "type": "internal"
+        },
+        {
+          "text": "Iranian government",
+          "url": "https://en.wikipedia.org/wiki/Government_of_Iran",
+          "type": "internal"
+        },
+        {
+          "text": "Israeli strikes against the nation",
+          "url": "https://en.wikipedia.org/wiki/June_2025_Israeli_strikes_on_Iran",
+          "type": "internal"
+        },
+        {
+          "text": "(The Times of Israel)",
+          "url": "https://www.timesofisrael.com/liveblog_entry/elon-musk-says-he-activated-starlink-in-tehran-after-regime-cuts-citizens-off-from-internet-amid-israeli-strikes/",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Internet censorship in Iran"
+      ],
+      "source": "parsed_section"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "date_id": "2025_June_18",
+  "extraction_type": "current",
+  "extraction_timestamp": "2025-06-18T08:15:15.397385",
+  "event_count": 3,
+  "events": [
+    {
+      "summary": "Israeli gunfire and airstrikes kill at least 30 Palestinians across the Gaza Strip . (Reuters)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Gaza war",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Gaza war",
+      "date": "June\u00a018,\u00a02025(2025-06-18)(Wednesday)",
+      "reporting_date": "June\u00a018,\u00a02025(2025-06-18)(Wednesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israeli",
+          "url": "https://en.wikipedia.org/wiki/Israel",
+          "type": "internal"
+        },
+        {
+          "text": "Palestinians",
+          "url": "https://en.wikipedia.org/wiki/Palestinians",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza Strip",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Strip",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/middle-east/israeli-fire-kills-30-gaza-medics-say-attention-shifts-iran-2025-06-18/",
+          "type": "external"
+        }
+      ],
+      "level": 2,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Gaza war"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Twenty-five Iranian ballistic missiles are launched at central Israel , with most being intercepted, but no injuries are reported. (YNet)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Iran\u2013Israel War",
+      "date": "June\u00a018,\u00a02025(2025-06-18)(Wednesday)",
+      "reporting_date": "June\u00a018,\u00a02025(2025-06-18)(Wednesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Iranian",
+          "url": "https://en.wikipedia.org/wiki/Islamic_Revolutionary_Guard_Corps_Aerospace_Force",
+          "type": "internal"
+        },
+        {
+          "text": "ballistic missiles",
+          "url": "https://en.wikipedia.org/wiki/Ballistic_missile",
+          "type": "internal"
+        },
+        {
+          "text": "central Israel",
+          "url": "https://en.wikipedia.org/wiki/Central_District_(Israel)",
+          "type": "internal"
+        },
+        {
+          "text": "(YNet)",
+          "url": "https://www.ynetnews.com/article/h1i6edkvxl",
+          "type": "external"
+        }
+      ],
+      "level": 2,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "The parliament of Ukraine approves a law to allow multiple citizenship for Ukrainians in an attempt to ease a demographic crisis caused by the Russian invasion of the country . (Reuters)",
+      "category": "Politics and elections",
+      "subcategory": null,
+      "full_category": "Politics and elections",
+      "date": "June\u00a018,\u00a02025(2025-06-18)(Wednesday)",
+      "reporting_date": "June\u00a018,\u00a02025(2025-06-18)(Wednesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "parliament of Ukraine",
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_Ukraine",
+          "type": "internal"
+        },
+        {
+          "text": "multiple citizenship",
+          "url": "https://en.wikipedia.org/wiki/Multiple_citizenship",
+          "type": "internal"
+        },
+        {
+          "text": "Ukrainians",
+          "url": "https://en.wikipedia.org/wiki/Ukrainians",
+          "type": "internal"
+        },
+        {
+          "text": "Russian invasion of the country",
+          "url": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/europe/parliament-passes-law-allow-multiple-citizenship-ukrainians-2025-06-18/",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    }
+  ]
+}

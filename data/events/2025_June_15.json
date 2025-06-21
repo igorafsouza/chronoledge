@@ -1,0 +1,900 @@
+{
+  "date_id": "2025_June_15",
+  "extraction_type": "current",
+  "extraction_timestamp": "2025-06-18T08:16:12.401026",
+  "event_count": 18,
+  "events": [
+    {
+      "summary": "The Israeli Air Force says it has targeted Mashhad Shahid Hasheminejad International Airport in eastern Iran , destroying a refueling plane used by the Islamic Republic of Iran Air Force . (BBC News)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israeli Air Force",
+          "url": "https://en.wikipedia.org/wiki/Israeli_Air_Force",
+          "type": "internal"
+        },
+        {
+          "text": "Mashhad Shahid Hasheminejad International Airport",
+          "url": "https://en.wikipedia.org/wiki/Mashhad_Shahid_Hasheminejad_International_Airport",
+          "type": "internal"
+        },
+        {
+          "text": "eastern Iran",
+          "url": "https://en.wikipedia.org/wiki/Eastern_Iran",
+          "type": "internal"
+        },
+        {
+          "text": "refueling plane",
+          "url": "https://en.wikipedia.org/wiki/Aerial_refueling",
+          "type": "internal"
+        },
+        {
+          "text": "Islamic Republic of Iran Air Force",
+          "url": "https://en.wikipedia.org/wiki/Islamic_Republic_of_Iran_Air_Force",
+          "type": "internal"
+        },
+        {
+          "text": "(BBC News)",
+          "url": "https://www.bbc.co.uk/news/live/c2kqkd03xn5t",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "An Iranian ballistic missile strike on a residential building kills nine people, including three children, and injures over 200 others in Bat Yam , Israel . ( The Times of Israel )",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "ballistic missile",
+          "url": "https://en.wikipedia.org/wiki/Ballistic_missile",
+          "type": "internal"
+        },
+        {
+          "text": "Bat Yam",
+          "url": "https://en.wikipedia.org/wiki/Bat_Yam",
+          "type": "internal"
+        },
+        {
+          "text": "Israel",
+          "url": "https://en.wikipedia.org/wiki/Israel",
+          "type": "internal"
+        },
+        {
+          "text": "(The Times of Israel)",
+          "url": "https://www.timesofisrael.com/6-dead-including-2-children-in-iranian-missile-strike-on-bat-yam-apartment-building/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "According to American officials , U.S. president Donald Trump vetoed a plan by Israel to assassinate the supreme leader of Iran , Ayatollah Ali Khamenei . (Reuters)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "American officials",
+          "url": "https://en.wikipedia.org/wiki/United_States_government",
+          "type": "internal"
+        },
+        {
+          "text": "U.S. president",
+          "url": "https://en.wikipedia.org/wiki/President_of_the_United_States",
+          "type": "internal"
+        },
+        {
+          "text": "Donald Trump",
+          "url": "https://en.wikipedia.org/wiki/Donald_Trump",
+          "type": "internal"
+        },
+        {
+          "text": "assassinate",
+          "url": "https://en.wikipedia.org/wiki/Assassination",
+          "type": "internal"
+        },
+        {
+          "text": "supreme leader of Iran",
+          "url": "https://en.wikipedia.org/wiki/Supreme_leader_of_Iran",
+          "type": "internal"
+        },
+        {
+          "text": "Ayatollah",
+          "url": "https://en.wikipedia.org/wiki/Ayatollah",
+          "type": "internal"
+        },
+        {
+          "text": "Ali Khamenei",
+          "url": "https://en.wikipedia.org/wiki/Ali_Khamenei",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/middle-east/trump-vetoed-an-israeli-plan-kill-irans-supreme-leader-us-officials-say-2025-06-15/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "The Syrian Observatory for Human Rights reports that a Syrian civilian woman was killed after a drone strikes her home in rural Tartus Governorate , Syria, which the group says was likely an Iranian drone. ( The Times of Israel )",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Syrian Observatory for Human Rights",
+          "url": "https://en.wikipedia.org/wiki/Syrian_Observatory_for_Human_Rights",
+          "type": "internal"
+        },
+        {
+          "text": "Syrian",
+          "url": "https://en.wikipedia.org/wiki/Syria",
+          "type": "internal"
+        },
+        {
+          "text": "drone strikes",
+          "url": "https://en.wikipedia.org/wiki/Drone_warfare",
+          "type": "internal"
+        },
+        {
+          "text": "Tartus Governorate",
+          "url": "https://en.wikipedia.org/wiki/Tartus_Governorate",
+          "type": "internal"
+        },
+        {
+          "text": "(The Times of Israel)",
+          "url": "https://www.timesofisrael.com/liveblog_entry/rights-group-says-woman-killed-in-western-syria-likely-by-iranian-drone/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "The Israel Defense Forces confirms that they recovered the body of Israeli hostage Aviv Atzili, who was abducted by the Palestinian Islamic Jihad during the October 7 attacks , in Gaza last Wednesday. ( Haaretz )",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Gaza war > Gaza war hostage crisis",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Gaza war > Gaza war hostage crisis",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israel Defense Forces",
+          "url": "https://en.wikipedia.org/wiki/Israel_Defense_Forces",
+          "type": "internal"
+        },
+        {
+          "text": "Palestinian Islamic Jihad",
+          "url": "https://en.wikipedia.org/wiki/Palestinian_Islamic_Jihad",
+          "type": "internal"
+        },
+        {
+          "text": "October 7 attacks",
+          "url": "https://en.wikipedia.org/wiki/October_7_attacks",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Strip",
+          "type": "internal"
+        },
+        {
+          "text": "(Haaretz)",
+          "url": "https://www.haaretz.com/israel-news/2025-06-15/ty-article/.premium/body-of-israeli-hostage-aviv-atzili-recovered-from-gaza-last-week-idf-confirms/00000197-631b-db73-aff7-7b5f32cc0000",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Gaza war",
+        "Gaza war hostage crisis"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Israeli gunfire and airstrikes kill at least 41 Palestinians across Gaza . (RT\u00c9 News)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Gaza war > Israeli bombing of the Gaza Strip",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Gaza war > Israeli bombing of the Gaza Strip",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israeli",
+          "url": "https://en.wikipedia.org/wiki/Israel",
+          "type": "internal"
+        },
+        {
+          "text": "Palestinians",
+          "url": "https://en.wikipedia.org/wiki/Palestinians",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Strip",
+          "type": "internal"
+        },
+        {
+          "text": "(RT\u00c9 News)",
+          "url": "https://www.rte.ie/news/middle-east/2025/0615/1518606-israel-gaza-strikes/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Gaza war",
+        "Israeli bombing of the Gaza Strip"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "At least eight people are killed and dozens of others are injured in a shooting near an aid distribution site near Rafah , Gaza . Witnesses attribute the shooting to Israeli forces. (NPR)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Gaza war > Rafah aid distribution killings",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Gaza war > Rafah aid distribution killings",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "aid distribution",
+          "url": "https://en.wikipedia.org/wiki/Humanitarian_aid",
+          "type": "internal"
+        },
+        {
+          "text": "Rafah",
+          "url": "https://en.wikipedia.org/wiki/Rafah",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Strip",
+          "type": "internal"
+        },
+        {
+          "text": "(NPR)",
+          "url": "https://www.npr.org/2025/06/15/nx-s1-5434274/at-least-8-dead-in-shooting-near-israeli-and-us-supported-aid-sites-in-gaza",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Gaza war",
+        "Rafah aid distribution killings"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Russia returns the bodies of 1,200 Ukrainian soldiers who were killed in action as part of a prisoner exchange agreement. (Reuters)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Russian invasion of Ukraine",
+      "full_category": "Armed conflicts and attacks > Russian invasion of Ukraine",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Russia",
+          "url": "https://en.wikipedia.org/wiki/Russia",
+          "type": "internal"
+        },
+        {
+          "text": "Ukrainian soldiers",
+          "url": "https://en.wikipedia.org/wiki/Armed_Forces_of_Ukraine",
+          "type": "internal"
+        },
+        {
+          "text": "killed in action",
+          "url": "https://en.wikipedia.org/wiki/Killed_in_action",
+          "type": "internal"
+        },
+        {
+          "text": "prisoner exchange",
+          "url": "https://en.wikipedia.org/wiki/Prisoner_exchange",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/europe/russia-has-handed-over-another-1200-bodies-ukrainian-soldiers-russian-state-news-2025-06-15/",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Russian invasion of Ukraine"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "A M w 6.1 earthquake hits Lima , Peru , killing one person and injuring at least five others. (Agencia EFE)",
+      "category": "Disasters and accidents",
+      "subcategory": "2025 Callao earthquake",
+      "full_category": "Disasters and accidents > 2025 Callao earthquake",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "earthquake",
+          "url": "https://en.wikipedia.org/wiki/Earthquake",
+          "type": "internal"
+        },
+        {
+          "text": "Lima",
+          "url": "https://en.wikipedia.org/wiki/Lima",
+          "type": "internal"
+        },
+        {
+          "text": "Peru",
+          "url": "https://en.wikipedia.org/wiki/Peru",
+          "type": "internal"
+        },
+        {
+          "text": "(Agencia EFE)",
+          "url": "https://efe.com/mundo/2025-06-15/peru-terremoto-lima-callao/",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "2025 Callao earthquake"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Seven people are killed, including an infant, when a Bell 407 aircraft crashes in a forested area in bad weather while en route to the Kedarnath Temple in Kedarnath , Uttarakhand , India . ( The Free Press Journal )",
+      "category": "Disasters and accidents",
+      "subcategory": null,
+      "full_category": "Disasters and accidents",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Bell 407",
+          "url": "https://en.wikipedia.org/wiki/Bell_407",
+          "type": "internal"
+        },
+        {
+          "text": "Kedarnath Temple",
+          "url": "https://en.wikipedia.org/wiki/Kedarnath_Temple",
+          "type": "internal"
+        },
+        {
+          "text": "Kedarnath",
+          "url": "https://en.wikipedia.org/wiki/Kedarnath",
+          "type": "internal"
+        },
+        {
+          "text": "Uttarakhand",
+          "url": "https://en.wikipedia.org/wiki/Uttarakhand",
+          "type": "internal"
+        },
+        {
+          "text": "India",
+          "url": "https://en.wikipedia.org/wiki/India",
+          "type": "internal"
+        },
+        {
+          "text": "(The Free Press Journal)",
+          "url": "https://www.freepressjournal.in/india/uttarakhand-helicopter-crash-7-killed-including-infant-as-chopper-crashes-near-kedarnath-route-terrifying-visuals-surface",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "At least six people are killed, 25 are swept away, and 32 others are injured, including six critically, when a bridge over a river collapses at a popular tourist destination in Kundamala, Pune , Maharashtra , India. (Al Arabiya) (CTV News)",
+      "category": "Disasters and accidents",
+      "subcategory": null,
+      "full_category": "Disasters and accidents",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Pune",
+          "url": "https://en.wikipedia.org/wiki/Pune",
+          "type": "internal"
+        },
+        {
+          "text": "Maharashtra",
+          "url": "https://en.wikipedia.org/wiki/Maharashtra",
+          "type": "internal"
+        },
+        {
+          "text": "(Al Arabiya)",
+          "url": "https://english.alarabiya.net/News/world/2025/06/15/six-killed-25-swept-away-after-bridge-collapse-in-india-s-pune",
+          "type": "external"
+        },
+        {
+          "text": "(CTV News)",
+          "url": "https://www.ctvnews.ca/world/article/2-killed-and-32-injured-after-a-bridge-collapses-at-a-tourist-destination-in-western-india/",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Three hikers are killed by a lightning strike on Mittagsspitze mountain in the Central Eastern Alps , Austria . (Reuters)",
+      "category": "Disasters and accidents",
+      "subcategory": null,
+      "full_category": "Disasters and accidents",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "hikers",
+          "url": "https://en.wikipedia.org/wiki/Hiking",
+          "type": "internal"
+        },
+        {
+          "text": "lightning strike",
+          "url": "https://en.wikipedia.org/wiki/Lightning_strike",
+          "type": "internal"
+        },
+        {
+          "text": "Mittagsspitze mountain",
+          "url": "https://en.wikipedia.org/wiki/Tschaggunser_Mittagspitze",
+          "type": "internal"
+        },
+        {
+          "text": "Central Eastern Alps",
+          "url": "https://en.wikipedia.org/wiki/Central_Eastern_Alps",
+          "type": "internal"
+        },
+        {
+          "text": "Austria",
+          "url": "https://en.wikipedia.org/wiki/Austria",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/three-hikers-killed-by-lightning-strike-austrian-alps-2025-06-16/",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Between 100,000 and 150,000 protesters march in The Hague , Netherlands , demanding that the Dutch government pressure Israel to halt its military campaign in the Gaza Strip . (AP)",
+      "category": "International relations",
+      "subcategory": "Gaza war protests",
+      "full_category": "International relations > Gaza war protests",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "The Hague",
+          "url": "https://en.wikipedia.org/wiki/The_Hague",
+          "type": "internal"
+        },
+        {
+          "text": "Netherlands",
+          "url": "https://en.wikipedia.org/wiki/Netherlands",
+          "type": "internal"
+        },
+        {
+          "text": "Dutch government",
+          "url": "https://en.wikipedia.org/wiki/Dutch_government",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza Strip",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Strip",
+          "type": "internal"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/netherlands-gaza-protest-hague-israel-4976ec568e1b61ad80fd5ab53df5871e",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Gaza war protests"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "The 51st G7 summit begins in Kananaskis , Alberta , Canada . (France24)",
+      "category": "International relations",
+      "subcategory": null,
+      "full_category": "International relations",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "51st G7 summit",
+          "url": "https://en.wikipedia.org/wiki/51st_G7_summit",
+          "type": "internal"
+        },
+        {
+          "text": "Kananaskis",
+          "url": "https://en.wikipedia.org/wiki/Kananaskis_Improvement_District",
+          "type": "internal"
+        },
+        {
+          "text": "Alberta",
+          "url": "https://en.wikipedia.org/wiki/Alberta",
+          "type": "internal"
+        },
+        {
+          "text": "Canada",
+          "url": "https://en.wikipedia.org/wiki/Canada",
+          "type": "internal"
+        },
+        {
+          "text": "(France24)",
+          "url": "https://www.france24.com/en/americas/20250616-g7-leaders-canada-mideast-tariffs",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "The MI6 appoints Blaise Metreweli to lead as Chief of the Secret Intelligence Service , making her the first woman to lead the agency. (BBC News)",
+      "category": "Politics and elections",
+      "subcategory": null,
+      "full_category": "Politics and elections",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "MI6",
+          "url": "https://en.wikipedia.org/wiki/MI6",
+          "type": "internal"
+        },
+        {
+          "text": "Blaise Metreweli",
+          "url": "https://en.wikipedia.org/wiki/Blaise_Metreweli",
+          "type": "internal"
+        },
+        {
+          "text": "Chief of the Secret Intelligence Service",
+          "url": "https://en.wikipedia.org/wiki/Chief_of_the_Secret_Intelligence_Service",
+          "type": "internal"
+        },
+        {
+          "text": "(BBC News)",
+          "url": "https://www.bbc.com/news/articles/czxyx04dv1wo",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "In endurance racing , the AF Corse Ferrari team wins the 24 Hours of Le Mans for the third consecutive year, with drivers Phil Hanson , Robert Kubica , and Yifei Ye . (AP)",
+      "category": "Sports",
+      "subcategory": "2025 24 Hours of Le Mans",
+      "full_category": "Sports > 2025 24 Hours of Le Mans",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "endurance racing",
+          "url": "https://en.wikipedia.org/wiki/Endurance_racing_(motorsport)",
+          "type": "internal"
+        },
+        {
+          "text": "AF Corse",
+          "url": "https://en.wikipedia.org/wiki/AF_Corse",
+          "type": "internal"
+        },
+        {
+          "text": "Ferrari",
+          "url": "https://en.wikipedia.org/wiki/Ferrari",
+          "type": "internal"
+        },
+        {
+          "text": "24 Hours of Le Mans",
+          "url": "https://en.wikipedia.org/wiki/24_Hours_of_Le_Mans",
+          "type": "internal"
+        },
+        {
+          "text": "Phil Hanson",
+          "url": "https://en.wikipedia.org/wiki/Phil_Hanson_(racing_driver)",
+          "type": "internal"
+        },
+        {
+          "text": "Robert Kubica",
+          "url": "https://en.wikipedia.org/wiki/Robert_Kubica",
+          "type": "internal"
+        },
+        {
+          "text": "Yifei Ye",
+          "url": "https://en.wikipedia.org/wiki/Yifei_Ye",
+          "type": "internal"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/le-mans-ferrari-24-hours-robert-kubica-affc5f1389e85c7bcf4d0d8a794caffb",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "2025 24 Hours of Le Mans"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "In tennis , German player Tatjana Maria defeats American player Amanda Anisimova 6\u20133, 6\u20134, in the Queen's Club Championships women's singles final to become the event's first female winner since Russia 's Olga Morozova in 1973 . At 37 years old, Maria also becomes the oldest winner of a WTA 500 event. (NDTV)",
+      "category": "Sports",
+      "subcategory": "2025 Queen's Club Championships",
+      "full_category": "Sports > 2025 Queen's Club Championships",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "tennis",
+          "url": "https://en.wikipedia.org/wiki/Tennis",
+          "type": "internal"
+        },
+        {
+          "text": "German",
+          "url": "https://en.wikipedia.org/wiki/Tennis_in_Germany",
+          "type": "internal"
+        },
+        {
+          "text": "Tatjana Maria",
+          "url": "https://en.wikipedia.org/wiki/Tatjana_Maria",
+          "type": "internal"
+        },
+        {
+          "text": "American",
+          "url": "https://en.wikipedia.org/wiki/Tennis_in_the_United_States",
+          "type": "internal"
+        },
+        {
+          "text": "Amanda Anisimova",
+          "url": "https://en.wikipedia.org/wiki/Amanda_Anisimova",
+          "type": "internal"
+        },
+        {
+          "text": "Queen's Club Championships",
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_Club_Championships",
+          "type": "internal"
+        },
+        {
+          "text": "women's singles final",
+          "url": "https://en.wikipedia.org/wiki/2025_Queen%27s_Club_Championships_%E2%80%93_Women%27s_singles",
+          "type": "internal"
+        },
+        {
+          "text": "Russia",
+          "url": "https://en.wikipedia.org/wiki/Tennis_in_Russia",
+          "type": "internal"
+        },
+        {
+          "text": "Olga Morozova",
+          "url": "https://en.wikipedia.org/wiki/Olga_Morozova",
+          "type": "internal"
+        },
+        {
+          "text": "1973",
+          "url": "https://en.wikipedia.org/wiki/1973_Queen%27s_Club_Championships",
+          "type": "internal"
+        },
+        {
+          "text": "WTA 500",
+          "url": "https://en.wikipedia.org/wiki/WTA_500_tournaments",
+          "type": "internal"
+        },
+        {
+          "text": "(NDTV)",
+          "url": "https://sports.ndtv.com/tennis/qualifier-tatjana-maria-completes-fairytale-run-to-queens-title-8675525",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "2025 Queen's Club Championships"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "In golf , JJ Spaun wins the 2025 U.S. Open with a score of one-under-par to win his first major title . (ESPN) (PGA)",
+      "category": "Sports",
+      "subcategory": "2025 U.S. Open",
+      "full_category": "Sports > 2025 U.S. Open",
+      "date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "reporting_date": "June\u00a015,\u00a02025(2025-06-15)(Sunday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "golf",
+          "url": "https://en.wikipedia.org/wiki/Golf",
+          "type": "internal"
+        },
+        {
+          "text": "JJ Spaun",
+          "url": "https://en.wikipedia.org/wiki/JJ_Spaun",
+          "type": "internal"
+        },
+        {
+          "text": "U.S. Open",
+          "url": "https://en.wikipedia.org/wiki/U.S._Open_(golf)",
+          "type": "internal"
+        },
+        {
+          "text": "one-under-par",
+          "url": "https://en.wikipedia.org/wiki/Par_(score)",
+          "type": "internal"
+        },
+        {
+          "text": "major title",
+          "url": "https://en.wikipedia.org/wiki/Men%27s_major_golf_championships",
+          "type": "internal"
+        },
+        {
+          "text": "(ESPN)",
+          "url": "https://www.espn.com/golf/story/_/id/45520741/jj-spaun-captures-first-major-title-wins-125th-us-open",
+          "type": "external"
+        },
+        {
+          "text": "(PGA)",
+          "url": "https://www.pgatour.com/tournaments/2025/u.s-open/R2025026/leaderboard/player/52215",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "2025 U.S. Open"
+      ],
+      "source": "parsed_section"
+    }
+  ]
+}

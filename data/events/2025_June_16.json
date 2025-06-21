@@ -1,0 +1,768 @@
+{
+  "date_id": "2025_June_16",
+  "extraction_type": "current",
+  "extraction_timestamp": "2025-06-18T08:16:09.637634",
+  "event_count": 15,
+  "events": [
+    {
+      "summary": "The death toll from Israeli airstrikes on Iran rises to at least 220 people, including 70 women and children. (Al Jazeera)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israeli",
+          "url": "https://en.wikipedia.org/wiki/Israel_Defense_Forces",
+          "type": "internal"
+        },
+        {
+          "text": "airstrikes",
+          "url": "https://en.wikipedia.org/wiki/Airstrike",
+          "type": "internal"
+        },
+        {
+          "text": "Iran",
+          "url": "https://en.wikipedia.org/wiki/Iran",
+          "type": "internal"
+        },
+        {
+          "text": "(Al Jazeera)",
+          "url": "https://www.aljazeera.com/news/liveblog/2025/6/15/updates-death-toll-grows-as-iran-and-israel-continue-to-trade-attacks",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Israel strikes buildings in Tehran belonging to the Islamic Republic of Iran Broadcasting , Iran's state-owned media company, knocking it temporarily off-air for an hour before later returning. Three employees are killed and several others are injured. (Al Jazeera) (Al-Monitor) ( The Wall Street Journal )",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israel",
+          "url": "https://en.wikipedia.org/wiki/Israel",
+          "type": "internal"
+        },
+        {
+          "text": "Tehran",
+          "url": "https://en.wikipedia.org/wiki/Tehran",
+          "type": "internal"
+        },
+        {
+          "text": "Islamic Republic of Iran Broadcasting",
+          "url": "https://en.wikipedia.org/wiki/Islamic_Republic_of_Iran_Broadcasting",
+          "type": "internal"
+        },
+        {
+          "text": "state-owned media",
+          "url": "https://en.wikipedia.org/wiki/State_media",
+          "type": "internal"
+        },
+        {
+          "text": "(Al Jazeera)",
+          "url": "https://www.aljazeera.com/news/liveblog/2025/6/17/live-israel-iran-trade-attacks-trump-orders-residents-of-tehran-to-flee?update=3780528",
+          "type": "external"
+        },
+        {
+          "text": "(Al-Monitor)",
+          "url": "https://www.al-monitor.com/originals/2025/06/iran-state-tv-briefly-knocked-air-strike-after-missiles-kill-11-israel",
+          "type": "external"
+        },
+        {
+          "text": "(The Wall Street Journal)",
+          "url": "https://www.wsj.com/livecoverage/israel-iran-attack-news/card/israel-bombs-iran-state-media-buildings-in-tehran-SMnTroA3jJGJpKjvdGWX",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Iran says Israel struck a hospital in Kermanshah in western Iran . Video footage published by local platforms showed bloodstains, indicating casualties from the strike. (Al Jazeera)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "hospital",
+          "url": "https://en.wikipedia.org/wiki/Hospital",
+          "type": "internal"
+        },
+        {
+          "text": "Kermanshah",
+          "url": "https://en.wikipedia.org/wiki/Kermanshah",
+          "type": "internal"
+        },
+        {
+          "text": "western Iran",
+          "url": "https://en.wikipedia.org/wiki/Western_Iran",
+          "type": "internal"
+        },
+        {
+          "text": "(Al Jazeera)",
+          "url": "https://www.aljazeera.com/news/2025/6/16/little-sign-of-restraint-as-israel-and-iran-continue-to-swap-deadly-strikes",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Israeli jets strike 120 surface-to-surface missile systems in central Iran and ten command and control centres belonging to the IRGC 's Quds Force . (AP)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "surface-to-surface missile",
+          "url": "https://en.wikipedia.org/wiki/Surface-to-surface_missile",
+          "type": "internal"
+        },
+        {
+          "text": "central Iran",
+          "url": "https://en.wikipedia.org/wiki/Central_Iran",
+          "type": "internal"
+        },
+        {
+          "text": "command and control",
+          "url": "https://en.wikipedia.org/wiki/Command_and_control",
+          "type": "internal"
+        },
+        {
+          "text": "IRGC",
+          "url": "https://en.wikipedia.org/wiki/Islamic_Revolutionary_Guard_Corps",
+          "type": "internal"
+        },
+        {
+          "text": "Quds Force",
+          "url": "https://en.wikipedia.org/wiki/Quds_Force",
+          "type": "internal"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/israel-iran-missile-attacks-nuclear-news-06-16-2025-c98074e62ce5afd4c3f6d33edaffa069",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Israeli drones strike two Iranian Air Force F-14 Tomcats stationed at Imam Khomeini International Airport . Combat footage released by the IDF confirm both were destroyed. ( The Times of Israel )",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "drones strike",
+          "url": "https://en.wikipedia.org/wiki/Drone_warfare",
+          "type": "internal"
+        },
+        {
+          "text": "Iranian Air Force",
+          "url": "https://en.wikipedia.org/wiki/Islamic_Republic_of_Iran_Air_Force",
+          "type": "internal"
+        },
+        {
+          "text": "F-14 Tomcats",
+          "url": "https://en.wikipedia.org/wiki/Grumman_F-14_Tomcat",
+          "type": "internal"
+        },
+        {
+          "text": "Imam Khomeini International Airport",
+          "url": "https://en.wikipedia.org/wiki/Imam_Khomeini_International_Airport",
+          "type": "internal"
+        },
+        {
+          "text": "(The Times of Israel)",
+          "url": "https://www.timesofisrael.com/liveblog_entry/idf-destroyed-two-iranian-f-14-fighter-jets-in-attack-on-tehran-airport/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "An Iranian ballistic missile barrage kills eight people and injures 287 others in central Israel . ( The Times of Israel ) (Reuters)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Iranian",
+          "url": "https://en.wikipedia.org/wiki/Islamic_Revolutionary_Guard_Corps_Aerospace_Force",
+          "type": "internal"
+        },
+        {
+          "text": "ballistic missile",
+          "url": "https://en.wikipedia.org/wiki/Ballistic_missile",
+          "type": "internal"
+        },
+        {
+          "text": "central Israel",
+          "url": "https://en.wikipedia.org/wiki/Central_District_(Israel)",
+          "type": "internal"
+        },
+        {
+          "text": "(The Times of Israel)",
+          "url": "https://www.timesofisrael.com/8-killed-nearly-300-injured-as-iranian-ballistic-missiles-strike-central-israel-haifa/",
+          "type": "external"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/americas/israel-iran-battle-escalates-will-be-high-agenda-world-leaders-meet-2025-06-16/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Iran 's parliament prepares a bill to exit the international nuclear Non-Proliferation Treaty . (Reuters)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Iran",
+          "url": "https://en.wikipedia.org/wiki/Iran",
+          "type": "internal"
+        },
+        {
+          "text": "parliament",
+          "url": "https://en.wikipedia.org/wiki/Islamic_Consultative_Assembly",
+          "type": "internal"
+        },
+        {
+          "text": "Non-Proliferation Treaty",
+          "url": "https://en.wikipedia.org/wiki/Non-Proliferation_Treaty",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/middle-east/iran-foreign-ministry-says-parliament-is-preparing-bill-leave-npt-2025-06-16/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Israel announces it has taken \"full aerial operational control\" of the airspace over Tehran and western Iran after destroying much of the country's air defence network giving the Israeli Air Force near complete air supremacy over Iranian forces . (BBC News)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict > 2025 Iran\u2013Israel War",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "airspace",
+          "url": "https://en.wikipedia.org/wiki/Airspace",
+          "type": "internal"
+        },
+        {
+          "text": "Tehran",
+          "url": "https://en.wikipedia.org/wiki/Tehran",
+          "type": "internal"
+        },
+        {
+          "text": "western Iran",
+          "url": "https://en.wikipedia.org/wiki/Western_Iran",
+          "type": "internal"
+        },
+        {
+          "text": "air defence",
+          "url": "https://en.wikipedia.org/wiki/Anti-aircraft_warfare",
+          "type": "internal"
+        },
+        {
+          "text": "Israeli Air Force",
+          "url": "https://en.wikipedia.org/wiki/Israeli_Air_Force",
+          "type": "internal"
+        },
+        {
+          "text": "air supremacy",
+          "url": "https://en.wikipedia.org/wiki/Air_supremacy",
+          "type": "internal"
+        },
+        {
+          "text": "Iranian forces",
+          "url": "https://en.wikipedia.org/wiki/Islamic_Republic_of_Iran_Armed_Forces",
+          "type": "internal"
+        },
+        {
+          "text": "(BBC News)",
+          "url": "https://www.bbc.co.uk/news/live/c2kqkd03xn5t",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict",
+        "2025 Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Democratic senator Tim Kaine of Virginia introduces legislation to prevent U.S. president Donald Trump from using military force against Iran without Congress 's authorization. (Reuters) (US Congress)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > 2024 Iran\u2013Israel conflict",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > 2024 Iran\u2013Israel conflict",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Democratic",
+          "url": "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+          "type": "internal"
+        },
+        {
+          "text": "senator",
+          "url": "https://en.wikipedia.org/wiki/United_States_Senate",
+          "type": "internal"
+        },
+        {
+          "text": "Tim Kaine",
+          "url": "https://en.wikipedia.org/wiki/Tim_Kaine",
+          "type": "internal"
+        },
+        {
+          "text": "Virginia",
+          "url": "https://en.wikipedia.org/wiki/Virginia",
+          "type": "internal"
+        },
+        {
+          "text": "U.S. president",
+          "url": "https://en.wikipedia.org/wiki/U.S._president",
+          "type": "internal"
+        },
+        {
+          "text": "Donald Trump",
+          "url": "https://en.wikipedia.org/wiki/Donald_Trump",
+          "type": "internal"
+        },
+        {
+          "text": "Congress",
+          "url": "https://en.wikipedia.org/wiki/United_States_Congress",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/us/us-senator-moves-limit-trumps-war-powers-iran-mideast-conflict-escalates-2025-06-16/",
+          "type": "external"
+        },
+        {
+          "text": "(US Congress)",
+          "url": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/59",
+          "type": "external"
+        }
+      ],
+      "level": 2,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "2024 Iran\u2013Israel conflict"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Israel kills at least 50 Palestinians in Gaza , including 23 near an aid distribution site run by the Gaza Humanitarian Foundation . (Reuters)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Gaza war > Rafah aid distribution killings",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Gaza war > Rafah aid distribution killings",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israel",
+          "url": "https://en.wikipedia.org/wiki/Israel",
+          "type": "internal"
+        },
+        {
+          "text": "Palestinians",
+          "url": "https://en.wikipedia.org/wiki/Palestinians",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Strip",
+          "type": "internal"
+        },
+        {
+          "text": "aid distribution",
+          "url": "https://en.wikipedia.org/wiki/Humanitarian_aid",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza Humanitarian Foundation",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Humanitarian_Foundation",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/middle-east/40-killed-gaza-many-trying-reach-food-un-denounces-israeli-backed-aid-system-2025-06-16/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Gaza war",
+        "Rafah aid distribution killings"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "The death toll from the attack by unknown gunmen in Guma , Benue State , Nigeria , on Saturday increases to over 150, including many who were burned to death . (AP)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Herder\u2013farmer conflicts in Nigeria",
+      "full_category": "Armed conflicts and attacks > Herder\u2013farmer conflicts in Nigeria",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Guma",
+          "url": "https://en.wikipedia.org/wiki/Guma,_Nigeria",
+          "type": "internal"
+        },
+        {
+          "text": "Benue State",
+          "url": "https://en.wikipedia.org/wiki/Benue_State",
+          "type": "internal"
+        },
+        {
+          "text": "Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Nigeria",
+          "type": "internal"
+        },
+        {
+          "text": "burned to death",
+          "url": "https://en.wikipedia.org/wiki/Death_by_burning",
+          "type": "internal"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/nigeria-attack-village-gunmen-e7088debbc5410fad2c3c3454442bd91",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Herder\u2013farmer conflicts in Nigeria"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "The death toll from severe weather and flash floods in \u00c9quateur Province , Democratic Republic of the Congo , rises to at least 77 with more than 100 others still reported missing. (AP)",
+      "category": "Disasters and accidents",
+      "subcategory": null,
+      "full_category": "Disasters and accidents",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "severe weather",
+          "url": "https://en.wikipedia.org/wiki/Severe_weather",
+          "type": "internal"
+        },
+        {
+          "text": "flash floods",
+          "url": "https://en.wikipedia.org/wiki/Flash_flood",
+          "type": "internal"
+        },
+        {
+          "text": "\u00c9quateur Province",
+          "url": "https://en.wikipedia.org/wiki/Province_of_%C3%89quateur",
+          "type": "internal"
+        },
+        {
+          "text": "Democratic Republic of the Congo",
+          "url": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo",
+          "type": "internal"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/congo-kinshasa-flooding-boat-accident-142280ad3916f0ddf8e5b9882875a21a",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Andorra and the Sovereign Military Order of Malta establish official diplomatic relations. ( Diari d'Andorra )",
+      "category": "International relations",
+      "subcategory": "Foreign relations of Andorra",
+      "full_category": "International relations > Foreign relations of Andorra",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Andorra",
+          "url": "https://en.wikipedia.org/wiki/Andorra",
+          "type": "internal"
+        },
+        {
+          "text": "Sovereign Military Order of Malta",
+          "url": "https://en.wikipedia.org/wiki/Sovereign_Military_Order_of_Malta",
+          "type": "internal"
+        },
+        {
+          "text": "(Diari d'Andorra)",
+          "url": "https://www.diariandorra.ad/nacional/250616/andorra-i-l-orde-malta-estableixen-relacions-diplomatiques-oficials_175124.html",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Foreign relations of Andorra"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Gary Hoy, a survivor of child sexual abuse at Kincora, resolves a legal action against the Police Service of Northern Ireland and Home Secretary with an undisclosed agreement. The legal action alleged that paedophile housemaster William McGrath was allowed to target children to gather information about the far-right paramilitary organization Tara . (RT\u00c9) .",
+      "category": "Law and crime",
+      "subcategory": "Kincora Boys' Home scandal",
+      "full_category": "Law and crime > Kincora Boys' Home scandal",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Police Service of Northern Ireland",
+          "url": "https://en.wikipedia.org/wiki/Police_Service_of_Northern_Ireland",
+          "type": "internal"
+        },
+        {
+          "text": "Home Secretary",
+          "url": "https://en.wikipedia.org/wiki/Home_Secretary",
+          "type": "internal"
+        },
+        {
+          "text": "paedophile",
+          "url": "https://en.wikipedia.org/wiki/Paedophile",
+          "type": "internal"
+        },
+        {
+          "text": "William McGrath",
+          "url": "https://en.wikipedia.org/wiki/William_McGrath",
+          "type": "internal"
+        },
+        {
+          "text": "Tara",
+          "url": "https://en.wikipedia.org/wiki/Tara_(Northern_Ireland)",
+          "type": "internal"
+        },
+        {
+          "text": "(RT\u00c9)",
+          "url": "https://www.rte.ie/news/courts/2025/0616/1518712-kincora-boys-home/",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Kincora Boys' Home scandal"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Thai police raid a house in Samut Prakan province , Thailand , and arrest 13 foreigners, mostly Australians and British people, for running a fraudulent electronic trading platform that has stolen over AU$ 1.9 million (US$1.2 million). (AP)",
+      "category": "Law and crime",
+      "subcategory": null,
+      "full_category": "Law and crime",
+      "date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "reporting_date": "June\u00a016,\u00a02025(2025-06-16)(Monday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Thai police",
+          "url": "https://en.wikipedia.org/wiki/Royal_Thai_Police",
+          "type": "internal"
+        },
+        {
+          "text": "Samut Prakan province",
+          "url": "https://en.wikipedia.org/wiki/Samut_Prakan_province",
+          "type": "internal"
+        },
+        {
+          "text": "Thailand",
+          "url": "https://en.wikipedia.org/wiki/Thailand",
+          "type": "internal"
+        },
+        {
+          "text": "Australians",
+          "url": "https://en.wikipedia.org/wiki/Australians",
+          "type": "internal"
+        },
+        {
+          "text": "British",
+          "url": "https://en.wikipedia.org/wiki/British_people",
+          "type": "internal"
+        },
+        {
+          "text": "fraudulent",
+          "url": "https://en.wikipedia.org/wiki/Fraud",
+          "type": "internal"
+        },
+        {
+          "text": "electronic trading platform",
+          "url": "https://en.wikipedia.org/wiki/Electronic_trading_platform",
+          "type": "internal"
+        },
+        {
+          "text": "AU$",
+          "url": "https://en.wikipedia.org/wiki/Australian_dollar",
+          "type": "internal"
+        },
+        {
+          "text": "(AP)",
+          "url": "https://apnews.com/article/thailand-australia-investment-scam-fraud-502276cd2888240c71e5aa1aa647e9c1",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    }
+  ]
+}

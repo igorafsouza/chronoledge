@@ -1,0 +1,442 @@
+{
+  "date_id": "2025_June_17",
+  "extraction_type": "current",
+  "extraction_timestamp": "2025-06-18T08:15:26.697198",
+  "event_count": 9,
+  "events": [
+    {
+      "summary": "Israel kills at least 59 Palestinians in Gaza after Israeli tanks fired into a crowd trying to get humanitarian aid from trucks. At least fourteen other people were also killed in separate Israeli gunfire and airstrikes elsewhere in the exclave. (Reuters)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Gaza war > Rafah aid distribution killings",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Gaza war > Rafah aid distribution killings",
+      "date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "reporting_date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israel",
+          "url": "https://en.wikipedia.org/wiki/Israel",
+          "type": "internal"
+        },
+        {
+          "text": "Palestinians",
+          "url": "https://en.wikipedia.org/wiki/Palestinians",
+          "type": "internal"
+        },
+        {
+          "text": "Gaza",
+          "url": "https://en.wikipedia.org/wiki/Gaza_Strip",
+          "type": "internal"
+        },
+        {
+          "text": "Israeli tanks",
+          "url": "https://en.wikipedia.org/wiki/Armored_Corps_(Israel)",
+          "type": "internal"
+        },
+        {
+          "text": "humanitarian aid",
+          "url": "https://en.wikipedia.org/wiki/Humanitarian_aid",
+          "type": "internal"
+        },
+        {
+          "text": "(Reuters)",
+          "url": "https://www.reuters.com/world/middle-east/israeli-tank-shelling-kills-45-people-awaiting-aid-trucks-gaza-ministry-says-2025-06-17/",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Gaza war",
+        "Rafah aid distribution killings"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "An Israeli soldier from the Golani Brigade is killed and three others are seriously injured in the southern Gaza Strip. (Al Jazeera)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Gaza war",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Gaza war",
+      "date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "reporting_date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Israeli soldier",
+          "url": "https://en.wikipedia.org/wiki/Israel_Defense_Forces",
+          "type": "internal"
+        },
+        {
+          "text": "Golani Brigade",
+          "url": "https://en.wikipedia.org/wiki/Golani_Brigade",
+          "type": "internal"
+        },
+        {
+          "text": "(Al Jazeera)",
+          "url": "https://aje.io/gn5i1t?update=3780445",
+          "type": "external"
+        }
+      ],
+      "level": 2,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Gaza war"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Israel says it has killed Major General Ali Shadmani , the most senior military commander in Iran who was appointed to his post four days ago. ( The New York Times )",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Iran\u2013Israel War > Airstrikes during the Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Iran\u2013Israel War > Airstrikes during the Iran\u2013Israel War",
+      "date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "reporting_date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Ali Shadmani",
+          "url": "https://en.wikipedia.org/wiki/Ali_Shadmani",
+          "type": "internal"
+        },
+        {
+          "text": "(The New York Times)",
+          "url": "https://www.nytimes.com/live/2025/06/17/world/israel-iran-trump",
+          "type": "external"
+        }
+      ],
+      "level": 3,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Iran\u2013Israel War",
+        "Airstrikes during the Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "U.S. president Donald Trump calls for the unconditional surrender of Iran amid its war with Israel . Iran rejects the ultimatum . (BBC News) ( The Guardian )",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Middle Eastern crisis > Iran\u2013Israel War",
+      "full_category": "Armed conflicts and attacks > Middle Eastern crisis > Iran\u2013Israel War",
+      "date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "reporting_date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "U.S. president",
+          "url": "https://en.wikipedia.org/wiki/President_of_the_United_States",
+          "type": "internal"
+        },
+        {
+          "text": "Donald Trump",
+          "url": "https://en.wikipedia.org/wiki/Donald_Trump",
+          "type": "internal"
+        },
+        {
+          "text": "unconditional surrender",
+          "url": "https://en.wikipedia.org/wiki/Unconditional_surrender",
+          "type": "internal"
+        },
+        {
+          "text": "Iran",
+          "url": "https://en.wikipedia.org/wiki/Iran",
+          "type": "internal"
+        },
+        {
+          "text": "Israel",
+          "url": "https://en.wikipedia.org/wiki/Israel",
+          "type": "internal"
+        },
+        {
+          "text": "ultimatum",
+          "url": "https://en.wikipedia.org/wiki/Ultimatum",
+          "type": "internal"
+        },
+        {
+          "text": "(BBC News)",
+          "url": "https://www.bbc.co.uk/news/live/cx23e4jz2g0t",
+          "type": "external"
+        },
+        {
+          "text": "(The Guardian)",
+          "url": "https://www.theguardian.com/world/2025/jun/17/middle-east-conflict-reaches-crucial-moment-as-trump-demands-real-end-to-iran-nuclear-programme",
+          "type": "external"
+        }
+      ],
+      "level": 2,
+      "topic_path": [
+        "Middle Eastern crisis",
+        "Iran\u2013Israel War"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Russian forces launch a total of 440 drones and 32 missiles at Kyiv , Ukraine , damaging buildings and public facilities, and killing 28 people and wounding dozens more. (BBC News)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Russian invasion of Ukraine > Kyiv strikes",
+      "full_category": "Armed conflicts and attacks > Russian invasion of Ukraine > Kyiv strikes",
+      "date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "reporting_date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Russian forces",
+          "url": "https://en.wikipedia.org/wiki/Russian_Armed_Forces",
+          "type": "internal"
+        },
+        {
+          "text": "drones",
+          "url": "https://en.wikipedia.org/wiki/Drone_warfare",
+          "type": "internal"
+        },
+        {
+          "text": "missiles",
+          "url": "https://en.wikipedia.org/wiki/Missile",
+          "type": "internal"
+        },
+        {
+          "text": "Kyiv",
+          "url": "https://en.wikipedia.org/wiki/Kyiv",
+          "type": "internal"
+        },
+        {
+          "text": "Ukraine",
+          "url": "https://en.wikipedia.org/wiki/Ukraine",
+          "type": "internal"
+        },
+        {
+          "text": "(BBC News)",
+          "url": "https://www.bbc.com/news/articles/cx24g4850x4o",
+          "type": "external"
+        }
+      ],
+      "level": 2,
+      "topic_path": [
+        "Russian invasion of Ukraine",
+        "Kyiv strikes"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Russia's Ministry of Defence says its air defence units have intercepted and destroyed 147 Ukrainian drones overnight. (BBC News)",
+      "category": "Armed conflicts and attacks",
+      "subcategory": "Russian invasion of Ukraine",
+      "full_category": "Armed conflicts and attacks > Russian invasion of Ukraine",
+      "date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "reporting_date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "temporal_info": {
+        "has_temporal_reference": true,
+        "temporal_reference": "overnight",
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Ministry of Defence",
+          "url": "https://en.wikipedia.org/wiki/Ministry_of_Defence_(Russia)",
+          "type": "internal"
+        },
+        {
+          "text": "air defence",
+          "url": "https://en.wikipedia.org/wiki/Air_defence",
+          "type": "internal"
+        },
+        {
+          "text": "(BBC News)",
+          "url": "https://www.bbc.com/news/articles/cx24g4850x4o",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Russian invasion of Ukraine"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Twenty-four people are evacuated after two oil tankers collide near the Strait of Hormuz in the Gulf of Oman . (NOS)",
+      "category": "Disasters and accidents",
+      "subcategory": null,
+      "full_category": "Disasters and accidents",
+      "date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "reporting_date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "oil tankers",
+          "url": "https://en.wikipedia.org/wiki/Oil_tanker",
+          "type": "internal"
+        },
+        {
+          "text": "Strait of Hormuz",
+          "url": "https://en.wikipedia.org/wiki/Strait_of_Hormuz",
+          "type": "internal"
+        },
+        {
+          "text": "Gulf of Oman",
+          "url": "https://en.wikipedia.org/wiki/Gulf_of_Oman",
+          "type": "internal"
+        },
+        {
+          "text": "(NOS)",
+          "url": "https://nos.nl/artikel/2571466-aanvaring-olietankers-bij-straat-van-hormuz",
+          "type": "external"
+        }
+      ],
+      "level": 0,
+      "topic_path": [],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "Seven Yemeni fishermen who were detained for nearly two months after entering Puntland waters without authorization from Puntland\u2019s Ministry of Fisheries and Marine Resources are released. The fishermen were apprehended by the Puntland Maritime Police Force after their vessel was intercepted by the coastguard in the Ras Aseir region of Puntland. ( The Eastleigh Voice ) (Hiiraan Online)",
+      "category": "Law and crime",
+      "subcategory": "Anti-piracy measures in Puntland , Puntland\u2013Yemen relations",
+      "full_category": "Law and crime > Anti-piracy measures in Puntland , Puntland\u2013Yemen relations",
+      "date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "reporting_date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Yemeni",
+          "url": "https://en.wikipedia.org/wiki/Yemenis",
+          "type": "internal"
+        },
+        {
+          "text": "Puntland",
+          "url": "https://en.wikipedia.org/wiki/Puntland",
+          "type": "internal"
+        },
+        {
+          "text": "Puntland\u2019s",
+          "url": "https://en.wikipedia.org/wiki/Government_of_Puntland",
+          "type": "internal"
+        },
+        {
+          "text": "Ministry of Fisheries and Marine Resources",
+          "url": "https://en.wikipedia.org/wiki/Ministry_of_Fisheries_and_Marine_Resources",
+          "type": "internal"
+        },
+        {
+          "text": "fishermen",
+          "url": "https://en.wikipedia.org/wiki/Fishermen",
+          "type": "internal"
+        },
+        {
+          "text": "Puntland Maritime Police Force",
+          "url": "https://en.wikipedia.org/wiki/Puntland_Maritime_Police_Force",
+          "type": "internal"
+        },
+        {
+          "text": "vessel",
+          "url": "https://en.wikipedia.org/wiki/Watercraft",
+          "type": "internal"
+        },
+        {
+          "text": "coastguard",
+          "url": "https://en.wikipedia.org/wiki/Coastguard",
+          "type": "internal"
+        },
+        {
+          "text": "Ras Aseir",
+          "url": "https://en.wikipedia.org/wiki/Ras_Aseir",
+          "type": "internal"
+        },
+        {
+          "text": "(The Eastleigh Voice)",
+          "url": "https://eastleighvoice.co.ke/somalia/165980/puntland-releases-seven-yemeni-fishermen-arrested-over-illegal-fishing-in-somali-waters",
+          "type": "external"
+        },
+        {
+          "text": "(Hiiraan Online)",
+          "url": "https://www.hiiraan.com/news4/2025/Jun/201899/puntland_frees_seven_yemeni_fishermen_after_nearly_two_months_in_custody.aspx",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "Anti-piracy measures in Puntland , Puntland\u2013Yemen relations"
+      ],
+      "source": "parsed_section"
+    },
+    {
+      "summary": "The Florida Panthers defeat the Edmonton Oilers in 6 games in a rematch of last year's finals , repeating as Stanley Cup champions. ( Miami Herald )",
+      "category": "Sports",
+      "subcategory": "2025 Stanley Cup Finals",
+      "full_category": "Sports > 2025 Stanley Cup Finals",
+      "date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "reporting_date": "June\u00a017,\u00a02025(2025-06-17)(Tuesday)",
+      "temporal_info": {
+        "has_temporal_reference": false,
+        "temporal_reference": null,
+        "days_offset": 0,
+        "is_follow_up": false
+      },
+      "links": [
+        {
+          "text": "Florida Panthers",
+          "url": "https://en.wikipedia.org/wiki/Florida_Panthers",
+          "type": "internal"
+        },
+        {
+          "text": "Edmonton Oilers",
+          "url": "https://en.wikipedia.org/wiki/Edmonton_Oilers",
+          "type": "internal"
+        },
+        {
+          "text": "last year's finals",
+          "url": "https://en.wikipedia.org/wiki/2024_Stanley_Cup_Finals",
+          "type": "internal"
+        },
+        {
+          "text": "Stanley Cup",
+          "url": "https://en.wikipedia.org/wiki/Stanley_Cup",
+          "type": "internal"
+        },
+        {
+          "text": "(Miami Herald)",
+          "url": "https://www.miamiherald.com/sports/nhl/florida-panthers/article308763290.html",
+          "type": "external"
+        }
+      ],
+      "level": 1,
+      "topic_path": [
+        "2025 Stanley Cup Finals"
+      ],
+      "source": "parsed_section"
+    }
+  ]
+}

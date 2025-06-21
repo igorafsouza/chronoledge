@@ -1,0 +1,42 @@
+{
+  "extracted_dates": [
+    "2025_June_18",
+    "2025_June_17",
+    "2025_June_16",
+    "2025_June_15",
+    "2025_June_14"
+  ],
+  "last_extraction": "2025-06-18T08:16:28.610135",
+  "extraction_history": [
+    {
+      "timestamp": "2025-06-18T08:15:15.397599",
+      "date_id": "2025_June_18",
+      "event_count": 3,
+      "extraction_type": "current"
+    },
+    {
+      "timestamp": "2025-06-18T08:15:26.697716",
+      "date_id": "2025_June_17",
+      "event_count": 9,
+      "extraction_type": "current"
+    },
+    {
+      "timestamp": "2025-06-18T08:16:09.638384",
+      "date_id": "2025_June_16",
+      "event_count": 15,
+      "extraction_type": "current"
+    },
+    {
+      "timestamp": "2025-06-18T08:16:12.402781",
+      "date_id": "2025_June_15",
+      "event_count": 18,
+      "extraction_type": "current"
+    },
+    {
+      "timestamp": "2025-06-18T08:16:28.610137",
+      "date_id": "2025_June_14",
+      "event_count": 12,
+      "extraction_type": "current"
+    }
+  ]
+}
