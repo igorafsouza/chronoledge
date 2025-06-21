@@ -5,8 +5,7 @@
 **How does knowledge evolve?**  
 Can we *observe*, *measure*, and *understand* how scientific paradigms shift — not just in hindsight, but as they unfold?
 
-Philosophers like **Thomas Kuhn** offered powerful metaphors to explain the structure of scientific revolutions. But with modern tools — **language models, semantic embeddings, and graph-based reasoning** — we can now attempt something more:  
-**measure knowledge evolution**.
+Philosophers like **Thomas Kuhn** offered powerful metaphors to explain the structure of scientific revolutions. But with modern tools — **language models, semantic embeddings, and graph-based reasoning** — we can now attempt something more:  **measure knowledge evolution**.
 
 Science and day-to-day information are fragmented, fast-moving, and noisy. ChronoLedge is a step toward **visualizing the semantic landscape as it adapts**, making patterns of meaning, divergence, and convergence observable.
 
