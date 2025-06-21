@@ -31,6 +31,13 @@ ChronoLedge is the **first step in a larger research effort** to model and inter
 
 ---
 
+## Interface
+
+![Frontend](tutorial/adventure_page_overview.png)
+![Frontend](tutorial/llm_powered_chat_overview.png)
+
+---
+
 ## System Overview
 
 ### 1. Event Ingestion  
@@ -113,13 +120,14 @@ requirements.txt
 pip install -r requirements.txt
 ```
 
-### 2. **Start the Application**
+### 2. **Add Keys to config.py**
+Open and edit the config file, adding OpenAI/Claude API key and ScrapeAPI key
+```bash
+chronoledge/core/config.py
+```
+
+### 3. **Start the Application**
 ```bash
 cd chronoledge
 python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
-
-### 3. Interface
-
-![Frontend](tutorial/adventure_page_overview.png)
-![Frontend](tutorial/llm_powered_chat_overview.png)
