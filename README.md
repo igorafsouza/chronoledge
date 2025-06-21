@@ -62,7 +62,7 @@ For each **event domain** (e.g., "Middle Eastern crisis", "Technology", "Electio
 
   > ### **AEZ Evolution Cycle**
 
-  > 1. **Speciation**: Created when first event doesn't match existing AEZs
+  > 1. **Genesis**: Created when first event doesn't match existing AEZs
   > 2. **Expansion**: Accumulates semantically similar events
   > 3. **Stabilization**: Reaches stable size with coherent semantic focus
   > 4. **Semantic Drift Phase**: Internal diversity increases as new event types join
